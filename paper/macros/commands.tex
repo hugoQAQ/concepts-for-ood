@@ -1,0 +1,283 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\left(#1\right)}}
+\newcommand{\argmin}{\operatornamewithlimits{arg\!\min}}
+\newcommand{\argmax}{\operatornamewithlimits{arg\!\max}}
+%\renewcommand{\figurename}{Fig.}
+%\newcommand{\proof}{\noindent {\bf Proof:\\}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\btab}{\begin{tabular}}
+\newcommand{\etab}{\end{tabular}}
+%\newcommand{\rr}{\raggedright}
+%\newcommand{\tn}{\tabularnewline}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+% Operators with space padding
+\newcommand{\cond}{{\,|\,}}
+\newcommand{\semic}{{\,;\,}}
+\newcommand{\col}{{\,:\,}}
+\newcommand{\equals}{{\,=\,}}
+\newcommand{\noprint}[1]{}
+\newcommand{\grad}{\nabla}
+
+
+\newcommand{\fn}[1]{\footnote{\hangpara{3em}{1} #1}}
+%Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Remove the "do" after for/while loops
+\newcommand\NoDo{\renewcommand\algorithmicdo{}}
+% Optional statement
+\newcommand\OptDo{\renewcommand\algorithmicdo{\textbf{[optional]}}}
+% Remove the "then" after if/else condition
+\newcommand\NoThen{\renewcommand\algorithmicthen{}}
+
+%Figure caption
+%\renewcommand{\figurename}{Fig.}
+
+%More space between rows
+\renewcommand{\arraystretch}{1.2}
+
+%\renewcommand{\thefootnote}{\normalsize \arabic{footnote}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsubsection}}
+\newcommand{\mypara}[1]{\noindent\textbf{#1}}
+%\newcommand{\citealtt}[1]{\citeauthor{#1},\citeyear{#1}}
+%\newcommand{\myycite}[1]{\citep{#1}}
+
+\def\bibfont{\small}
+\def \tcb {\textcolor{blue}}
+\def \tcr {\textcolor{red}}
+\def \tcg {\textcolor{green}}
+\def \tcc {\textcolor{cyan}}
+\def \tcm {\textcolor{magenta}}
+\def \ie {{\em i.e.},~}
+\def \cf {{\em cf.},~}
+\def \eg {{\em e.g.},~}
+\def \etc {{\em etc.}}
+\def \etal {{\em et al.}}
+
+\def \reals {\mathbb{R}}
+\def \uone {\underline{1}}
+\def \bfone {\mathbf{1}}
+\def \uzero {\underline{0}}
+\def \bfzero {\mathbf{0}}
+\def \expec {\mathop{\mathbb{E}}}
+\def \proba {\mathbb{P}}
+%\def \indicator {\mathbf{1}}
+\def \indicator {\mathbbm{1}}
+
+\newcommand{\inputs}{\mathcal{X}} % input space
+\newcommand{\outputs}{\mathcal{Y}} % output space
+\newcommand{\simplex}{\Delta} % simplex/probabilistic vectors
+\newcommand{\Pin}{P_{\textrm{in}}}
+\newcommand{\Pout}{P_{\textrm{out}}}
+% Datasets
+\newcommand{\Dtr}{D^{\textrm{tr}}}
+\newcommand{\Dintr}{D_{\textrm{in}}^{\textrm{tr}}}
+\newcommand{\Douttr}{D_{\textrm{out}}^{\textrm{tr}}}
+\newcommand{\Dinte}{D_{\textrm{in}}^{\textrm{te}}}
+\newcommand{\Doutte}{D_{\textrm{out}}^{\textrm{te}}}
+\newcommand{\Dval}{D^{\textrm{val}}}
+\newcommand{\Dinval}{D_{\textrm{in}}^{\textrm{val}}}
+\newcommand{\Doutval}{D_{\textrm{out}}^{\textrm{val}}}
+% Number of samples
+\newcommand{\Nintr}{N_{\textrm{in}}^{\textrm{tr}}}
+\newcommand{\Nouttr}{N_{\textrm{out}}^{\textrm{tr}}}
+\newcommand{\Ninte}{N_{\textrm{in}}^{\textrm{te}}}
+\newcommand{\Noutte}{N_{\textrm{out}}^{\textrm{te}}}
+\newcommand{\Ninval}{N_{\textrm{in}}^{\textrm{val}}}
+\newcommand{\Noutval}{N_{\textrm{out}}^{\textrm{val}}}
+
+\newcommand{\recphi}{\widehat{\bfphi}_{\bfg, \bfC}}
+\newcommand{\VC}{\mathbf{v}^{}_{\mathbf{C}}}
+\newcommand{\TVC}{\widetilde{\mathbf{v}}^{}_{\mathbf{C}}}
+\newcommand{\fcon}{\mathbf{f}^{\textrm{con}}}
+\newcommand{\Dcon}{\mathcal{D}^{\textrm{con}}_\gamma}
+\newcommand{\Scon}{S^{\textrm{con}}}
+
+\newcommand{\expnum}[2]{{#1}\mathrm{e}{#2}}
+
+\def \mysum {\displaystyle\sum\limits}
+\def \myprod {\displaystyle\prod\limits}
+\def \myint {\displaystyle\int\limits}
+
+\def \hatp {\widehat{P}}    % For probability estimates
+\def \umu {\underline{\mu}}
+\def \ualpha {\underline{\alpha}}
+\def \ubeta {\underline{\beta}}
+\def \ugamma {\underline{\gamma}}
+\def \udelta {\underline{\delta}}
+\def \ueta {\underline{\eta}}
+\def \urho {\underline{\rho}}
+\def \uzeta {\underline{\zeta}}
+\def \ulambda {\underline{\lambda}}
+\def \usigma {\underline{\sigma}}
+\def \upsi {\underline{\psi}}
+
+%Bold Greek symbols
+\def \bfSigma {\bm{\Sigma}}
+\def \bfsigma {\bm{\sigma}}
+\def \bftheta {\bm{\theta}}
+\def \bfphi {\bm{\phi}}
+\def \bfPhi {\bm{\Phi}}
+\def \bfmu {\bm{\mu}}
+\def \bfpsi {\bm{\psi}}
+\def \bfdelta {\bm{\delta}}
+
+\def \bfa {\mathbf{a}}
+\def \bfb {\mathbf{b}}
+\def \bfc {\mathbf{c}}
+\def \bfd {\mathbf{d}}
+\def \bfe {\mathbf{e}}
+\def \bff {\mathbf{f}}
+\def \bfg {\mathbf{g}}
+\def \bfh {\mathbf{h}}
+\def \bfi {\mathbf{i}}
+\def \bfj {\mathbf{j}}
+\def \bfk {\mathbf{k}}
+\def \bfl {\mathbf{l}}
+\def \bfm {\mathbf{m}}
+\def \bfn {\mathbf{n}}
+\def \bfo {\mathbf{o}}
+\def \bfp {\mathbf{p}}
+\def \bfq {\mathbf{q}}
+\def \bfr {\mathbf{r}}
+\def \bfs {\mathbf{s}}
+\def \bft {\mathbf{t}}
+\def \bfu {\mathbf{u}}
+\def \bfv {\mathbf{v}}
+\def \bfw {\mathbf{w}}
+\def \bfx {\mathbf{x}}
+\def \bfy {\mathbf{y}}
+\def \bfz {\mathbf{z}}
+
+\def \bfA {\mathbf{A}}
+\def \bfB {\mathbf{B}}
+\def \bfC {\mathbf{C}}
+\def \bfD {\mathbf{D}}
+\def \bfE {\mathbf{E}}
+\def \bfF {\mathbf{F}}
+\def \bfG {\mathbf{G}}
+\def \bfH {\mathbf{H}}
+\def \bfI {\mathbf{I}}
+\def \bfJ {\mathbf{J}}
+\def \bfK {\mathbf{K}}
+\def \bfL {\mathbf{L}}
+\def \bfM {\mathbf{M}}
+\def \bfN {\mathbf{N}}
+\def \bfO {\mathbf{O}}
+\def \bfP {\mathbf{P}}
+\def \bfQ {\mathbf{Q}}
+\def \bfR {\mathbf{R}}
+\def \bfS {\mathbf{S}}
+\def \bfT {\mathbf{T}}
+\def \bfU {\mathbf{U}}
+\def \bfV {\mathbf{V}}
+\def \bfW {\mathbf{W}}
+\def \bfX {\mathbf{X}}
+\def \bfY {\mathbf{Y}}
+\def \bfZ {\mathbf{Z}}
+
+\def \ua {\underline{a}}
+\def \ub {\underline{b}}
+\def \uc {\underline{c}}
+\def \ud {\underline{d}}
+\def \ue {\underline{e}}
+\def \uf {\underline{f}}
+\def \ug {\underline{g}}
+\def \uh {\underline{h}}
+\def \ui {\underline{i}}
+\def \uj {\underline{j}}
+\def \uk {\underline{k}}
+\def \ul {\underline{l}}
+\def \um {\underline{m}}
+\def \un {\underline{n}}
+\def \uo {\underline{o}}
+\def \up {\underline{p}}
+\def \uq {\underline{q}}
+\def \ur {\underline{r}}
+\def \us {\underline{s}}
+\def \ut {\underline{t}}
+\def \uu {\underline{u}}
+\def \uv {\underline{v}}
+\def \uw {\underline{w}}
+\def \ux {\underline{x}}
+\def \uy {\underline{y}}
+\def \uz {\underline{z}}
+
+\def \uA {\underline{A}}
+\def \uB {\underline{B}}
+\def \uC {\underline{C}}
+\def \uD {\underline{D}}
+\def \uE {\underline{E}}
+\def \uF {\underline{F}}
+\def \uG {\underline{G}}
+\def \uH {\underline{H}}
+\def \uI {\underline{I}}
+\def \uJ {\underline{J}}
+\def \uK {\underline{K}}
+\def \uL {\underline{L}}
+\def \uM {\underline{M}}
+\def \uN {\underline{N}}
+\def \uO {\underline{O}}
+\def \uP {\underline{P}}
+\def \uQ {\underline{Q}}
+\def \uR {\underline{R}}
+\def \uS {\underline{S}}
+\def \uT {\underline{T}}
+\def \uU {\underline{U}}
+\def \uV {\underline{V}}
+\def \uW {\underline{W}}
+\def \uX {\underline{X}}
+\def \uY {\underline{Y}}
+\def \uZ {\underline{Z}}
+
+\def \calA {\mathcal{A}}
+\def \calB {\mathcal{B}}
+\def \calC {\mathcal{C}}
+\def \calD {\mathcal{D}}
+\def \calE {\mathcal{E}}
+\def \calF {\mathcal{F}}
+\def \calG {\mathcal{G}}
+\def \calH {\mathcal{H}}
+\def \calI {\mathcal{I}}
+\def \calJ {\mathcal{J}}
+\def \calK {\mathcal{K}}
+\def \calL {\mathcal{L}}
+\def \calM {\mathcal{M}}
+\def \calN {\mathcal{N}}
+\def \calO {\mathcal{O}}
+\def \hatP {\widehat{P}}
+\def \calP {\mathcal{P}}
+\def \calQ {\mathcal{Q}}
+\def \calR {\mathcal{R}}
+\def \calS {\mathcal{S}}
+\def \calT {\mathcal{T}}
+\def \calU {\mathcal{U}}
+\def \calV {\mathcal{V}}
+\def \calW {\mathcal{W}}
+\def \calX {\mathcal{X}}
+\def \calY {\mathcal{Y}}
+\def \calZ {\mathcal{Z}}

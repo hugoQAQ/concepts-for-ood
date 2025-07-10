@@ -1,0 +1,49 @@
+
+
+Out-of-distribution (OOD) detection plays a crucial role in ensuring the safe deployment of deep neural network (DNN) classifiers. %, by handling inputs that the classifier is not trained to handle. 
+% While a plethora of methods have emerged to improve detection performance, a critical gap remains in interpreting their decisions in a human-friendly way.
+While a plethora of methods have focused on improving the performance of OOD detectors, a critical gap remains in interpreting their decisions in a human-friendly way.
+In this work, we attempt to bridge this gap by providing explanations for OOD detectors using high-level concepts.
+% Motivated by the unexplored applicability of concept-based explanations to OOD detection tasks, 
+We first propose two metrics for assessing the effectiveness of a particular set of concepts: 1) \textit{detection completeness}, which quantifies the sufficiency of concepts for explaining an OOD detector's decisions, and 2) \textit{concept separability}, which captures the distributional separation between in-distribution and OOD data in a projected concept space.
+We then propose a general framework for learning a set of concepts that satisfy the desired properties of detection completeness and concept separability.
+Using real-world images as a testing domain, we evaluate our proposed algorithm on a diverse set of popular OOD detection methods, and demonstrate which concepts prominently contribute to the detection results via a modified Shapley value-based importance score.
+
+\jayaram{via counterfactual analysis and a modified Shapley value-based importance score.}
+
+
+
+% Revised intro JR
+
+It is well known that machine learning (ML) models such as a DNN classifier can yield uncertain and unreliable predictions on OOD inputs from an unknown distribution not observed by the model during training~\cite{amodei2016AISafety,goodfellow2015explaining,nguyen2015posterior}.
+OOD detectors provide a line of defense against such inputs by detecting them so that the ML model can abstain from predicting on them~\cite{hendrycks2018OE,lin2021MOOD,mohseni2020self}.
+Focusing on DNN classifiers, it is common for an OOD detector to be typically trained based on the intermediate and/or final layer representations of the classifier.
+The detector learns by identifying layer-activation patterns that are common to normal (in-distribution) inputs and example OOD inputs.
+Being a statistical model, any OOD detector makes incorrect decisions, \ie identifies in-distribution (ID) inputs as OOD (false positives), and OOD inputs as ID (false negatives).
+Therefore, it is important for a human analyst to be able to understand why an OOD detector makes a certain decision, rather than have a black-box model.
+Consider the example of medical diagnosis where an OOD detector often incorrectly identifies a normal MRI as being abnormal, requiring the intervention of a human analyst.
+Such errors by an OOD detector without explanations can reduce the trust that an analyst may have on the decisions of the detector. 
+Moreover, understanding such decisions of an OOD detector can help in making it more accurate.
+
+% Motivated by the importance of being able to 
+Recently, there has been a steadily-increasing number of works addressing the problem of learning 
+OOD detectors with better performance~\textcolor{blue}{(cite)}. 
+However, the problem of explaining the decisions of an OOD detector in a human-understandable way remains fairly unexplored.
+On the other hand, the problem of attributing the predictions of a classifier to certain salient inputs or higher-level concepts has also received a lot of interest recently~\cite{yeh2019completeness,kim2018tcav}.
+
+
+Naturally, one may consider running an existing interpretation method for machine learning models (e.g., \cite{kim2018tcav, ghorbani2019ace}) on an example input, but that is inadequate in that it fails to provide insights as to why one example is in-distribution (ID) while another is OOD.
+
+
+
+
+It is well known that machine learning (ML) models can yield uncertain and unreliable predictions on out-of-distribution (OOD) inputs, \ie inputs from outside the training distribution~\citep{amodei2016AISafety,goodfellow2015explaining,nguyen2015posterior}.
+% from an unknown distribution on which the model was not trained~\citep{amodei2016AISafety,goodfellow2015explaining,nguyen2015posterior}.
+% The most common practice to avoid such phenomenon is to associate a detector that identifies whether an incoming input is likely to be OOD, then reject the model's decision on the OOD input \citep{hendrycks2018OE,lin2021MOOD,mohseni2020self}.
+The most common line of defense in this situation is to augment the ML model (\eg a DNN classifier) with a detector that can identify and flag such inputs as OOD. The ML model can then abstain from making predictions on such inputs~\citep{hendrycks2018OE,lin2021MOOD,mohseni2020self}.
+
+
+
+
+
+

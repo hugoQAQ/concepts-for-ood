@@ -1,0 +1,455 @@
+\begin{thebibliography}{56}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Adebayo et~al.(2020)Adebayo, Muelly, Liccardi, and
+  Kim]{adebayo2020debugging}
+Adebayo, J., Muelly, M., Liccardi, I., and Kim, B.
+\newblock Debugging tests for model explanations.
+\newblock In \emph{Advances in Neural Information Processing Systems 33: Annual
+  Conference on Neural Information Processing Systems}, 2020.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2020/hash/075b051ec3d22dac7b33f788da631fd4-Abstract.html}.
+
+\bibitem[Alvarez{-}Melis \& Jaakkola(2018)Alvarez{-}Melis and Jaakkola]{SENN}
+Alvarez{-}Melis, D. and Jaakkola, T.~S.
+\newblock Towards robust interpretability with self-explaining neural networks.
+\newblock In \emph{Advances in Neural Information Processing Systems 31: Annual
+  Conference on Neural Information Processing Systems ({NeurIPS})}, pp.\
+  7786--7795, 2018.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2018/hash/3e9f0fc9b2f89e043bc6233994dfcf76-Abstract.html}.
+
+\bibitem[Amodei et~al.(2016)Amodei, Olah, Steinhardt, Christiano, Schulman, and
+  Man{\'e}]{amodei2016AISafety}
+Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J., and
+  Man{\'e}, D.
+\newblock Concrete problems in {AI} safety.
+\newblock \emph{arXiv preprint arXiv:1606.06565}, 2016.
+
+\bibitem[Araujo et~al.(2019)Araujo, Norris, and Sim]{araujo2019computing}
+Araujo, A., Norris, W., and Sim, J.
+\newblock Computing receptive fields of convolutional neural networks.
+\newblock \emph{Distill}, 2019.
+\newblock \doi{10.23915/distill.00021}.
+\newblock \url{https://distill.pub/2019/computing-receptive-fields}.
+
+\bibitem[Armstrong et~al.(1983)Armstrong, Gleitman, and
+  Gleitman]{armstrong1983human-concepts}
+Armstrong, S.~L., Gleitman, L.~R., and Gleitman, H.
+\newblock What some concepts might not be.
+\newblock \emph{Cognition}, 13\penalty0 (3):\penalty0 263--308, 1983.
+
+\bibitem[Bhattacharyya(1943)]{bhattacharyya1943measure}
+Bhattacharyya, A.
+\newblock On a measure of divergence between two statistical populations
+  defined by their probability distributions.
+\newblock \emph{Bull. Calcutta Math. Soc.}, 35:\penalty0 99--109, 1943.
+
+\bibitem[Bouchacourt \& Denoyer(2019)Bouchacourt and
+  Denoyer]{bouchacourt2019educe}
+Bouchacourt, D. and Denoyer, L.
+\newblock {EDUCE:} explaining model decisions through unsupervised concepts
+  extraction.
+\newblock \emph{CoRR}, abs/1905.11852, 2019.
+\newblock URL \url{http://arxiv.org/abs/1905.11852}.
+
+\bibitem[Cao \& Zhang(2022)Cao and Zhang]{cao2022deep}
+Cao, S. and Zhang, Z.
+\newblock Deep hybrid models for out-of-distribution detection.
+\newblock In \emph{Proceedings of the {IEEE/CVF} Conference on Computer Vision
+  and Pattern Recognition}, pp.\  4733--4743, 2022.
+
+\bibitem[Chen et~al.(2019)Chen, Song, Wainwright, and Jordan]{chen2018shapley}
+Chen, J., Song, L., Wainwright, M.~J., and Jordan, M.~I.
+\newblock L-shapley and c-shapley: Efficient model interpretation for
+  structured data.
+\newblock In \emph{7th International Conference on Learning Representations
+  ({ICLR})}. OpenReview.net, 2019.
+\newblock URL \url{https://openreview.net/forum?id=S1E3Ko09F7}.
+
+\bibitem[Chen et~al.(2021)Chen, Li, Wu, Liang, and Jha]{chen2021atom}
+Chen, J., Li, Y., Wu, X., Liang, Y., and Jha, S.
+\newblock {ATOM:} robustifying out-of-distribution detection using outlier
+  mining.
+\newblock In \emph{Joint European Conference on Machine Learning and Knowledge
+  Discovery in Databases, {ECML} {PKDD}}, volume 12977 of \emph{Lecture Notes
+  in Computer Science}, pp.\  430--445. Springer, 2021.
+\newblock \doi{10.1007/978-3-030-86523-8\_26}.
+\newblock URL \url{https://doi.org/10.1007/978-3-030-86523-8\_26}.
+
+\bibitem[Cimpoi et~al.(2014)Cimpoi, Maji, Kokkinos, Mohamed, and
+  Vedaldi]{cimpoi2014textures}
+Cimpoi, M., Maji, S., Kokkinos, I., Mohamed, S., and Vedaldi, A.
+\newblock Describing textures in the wild.
+\newblock In \emph{Proceedings of the {IEEE} Conference on Computer Vision and
+  Pattern Recognition}, pp.\  3606--3613, 2014.
+
+\bibitem[DeVries \& Taylor(2018)DeVries and Taylor]{devries2018learning}
+DeVries, T. and Taylor, G.~W.
+\newblock Learning confidence for out-of-distribution detection in neural
+  networks.
+\newblock \emph{arXiv preprint arXiv:1802.04865}, 2018.
+
+\bibitem[Fujimoto et~al.(2006)Fujimoto, Kojadinovic, and
+  Marichal]{fujimoto2006axiomatic}
+Fujimoto, K., Kojadinovic, I., and Marichal, J.-L.
+\newblock Axiomatic characterizations of probabilistic and
+  cardinal-probabilistic interaction indices.
+\newblock \emph{Games and Economic Behavior}, 55\penalty0 (1):\penalty0 72--99,
+  2006.
+
+\bibitem[Fukunaga(1990{\natexlab{a}})]{fukunaga1990bhatta}
+Fukunaga, K.
+\newblock \emph{Introduction to Statistical Pattern Recognition}, chapter~3,
+  pp.\  97--103.
+\newblock Academic Press, 2 edition, 1990{\natexlab{a}}.
+
+\bibitem[Fukunaga(1990{\natexlab{b}})]{fukunaga1990separ}
+Fukunaga, K.
+\newblock \emph{Introduction to Statistical Pattern Recognition}, chapter~10,
+  pp.\  446--451.
+\newblock Academic Press, 2 edition, 1990{\natexlab{b}}.
+
+\bibitem[Geifman \& El{-}Yaniv(2019)Geifman and
+  El{-}Yaniv]{geifman2019selectivenet}
+Geifman, Y. and El{-}Yaniv, R.
+\newblock {SelectiveNet}: {A} deep neural network with an integrated reject
+  option.
+\newblock In \emph{Proceedings of the 36th International Conference on Machine
+  Learning ({ICML})}, volume~97 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  2151--2159. {PMLR}, 2019.
+\newblock URL \url{http://proceedings.mlr.press/v97/geifman19a.html}.
+
+\bibitem[Ghorbani et~al.(2019)Ghorbani, Wexler, Zou, and Kim]{ghorbani2019ace}
+Ghorbani, A., Wexler, J., Zou, J.~Y., and Kim, B.
+\newblock Towards automatic concept-based explanations.
+\newblock In \emph{Advances in Neural Information Processing Systems 32: Annual
+  Conference on Neural Information Processing Systems ({NeurIPS})}, pp.\
+  9273--9282, 2019.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2019/hash/77d2afcb31f6493e350fca61764efb9a-Abstract.html}.
+
+\bibitem[Goodfellow et~al.(2015)Goodfellow, Shlens, and
+  Szegedy]{goodfellow2015explaining}
+Goodfellow, I.~J., Shlens, J., and Szegedy, C.
+\newblock Explaining and harnessing adversarial examples.
+\newblock In \emph{3rd International Conference on Learning Representations
+  ({ICLR})}, 2015.
+\newblock URL \url{http://arxiv.org/abs/1412.6572}.
+
+\bibitem[Hendrycks \& Gimpel(2017)Hendrycks and Gimpel]{hendrycks2016msp}
+Hendrycks, D. and Gimpel, K.
+\newblock A baseline for detecting misclassified and out-of-distribution
+  examples in neural networks.
+\newblock In \emph{5th International Conference on Learning Representations
+  ({ICLR})}. OpenReview.net, 2017.
+\newblock URL \url{https://openreview.net/forum?id=Hkg4TI9xl}.
+
+\bibitem[Hendrycks et~al.(2019)Hendrycks, Mazeika, and
+  Dietterich]{hendrycks2018OE}
+Hendrycks, D., Mazeika, M., and Dietterich, T.~G.
+\newblock Deep anomaly detection with outlier exposure.
+\newblock In \emph{7th International Conference on Learning Representations
+  ({ICLR})}. OpenReview.net, 2019.
+\newblock URL \url{https://openreview.net/forum?id=HyxCxhRcY7}.
+
+\bibitem[Hendrycks et~al.(2021)Hendrycks, Basart, Mu, Kadavath, Wang, Dorundo,
+  Desai, Zhu, Parajuli, Guo, Song, Steinhardt, and Gilmer]{hendrycks2021many}
+Hendrycks, D., Basart, S., Mu, N., Kadavath, S., Wang, F., Dorundo, E., Desai,
+  R., Zhu, T., Parajuli, S., Guo, M., Song, D., Steinhardt, J., and Gilmer, J.
+\newblock The many faces of robustness: {A} critical analysis of
+  out-of-distribution generalization.
+\newblock In \emph{{IEEE/CVF} International Conference on Computer Vision
+  ({ICCV})}, pp.\  8320--8329. {IEEE}, 2021.
+\newblock \doi{10.1109/ICCV48922.2021.00823}.
+\newblock URL \url{https://doi.org/10.1109/ICCV48922.2021.00823}.
+
+\bibitem[Hendrycks et~al.(2022)Hendrycks, Zou, Mazeika, Tang, Li, Song, and
+  Steinhardt]{hendrycks2022pixmix}
+Hendrycks, D., Zou, A., Mazeika, M., Tang, L., Li, B., Song, D., and
+  Steinhardt, J.
+\newblock {PixMix}: {D}reamlike pictures comprehensively improve safety
+  measures.
+\newblock In \emph{{IEEE/CVF} Conference on Computer Vision and Pattern
+  Recognition ({CVPR})}, pp.\  16762--16771. {IEEE}, 2022.
+\newblock \doi{10.1109/CVPR52688.2022.01628}.
+\newblock URL \url{https://doi.org/10.1109/CVPR52688.2022.01628}.
+
+\bibitem[Hinton et~al.(2015)Hinton, Vinyals, and Dean]{hinton2015distilling}
+Hinton, G.~E., Vinyals, O., and Dean, J.
+\newblock Distilling the knowledge in a neural network.
+\newblock \emph{CoRR}, abs/1503.02531, 2015.
+\newblock URL \url{http://arxiv.org/abs/1503.02531}.
+
+\bibitem[Hsu et~al.(2020)Hsu, Shen, Jin, and Kira]{hsu2020GeneralizedODIN}
+Hsu, Y., Shen, Y., Jin, H., and Kira, Z.
+\newblock Generalized {ODIN:} detecting out-of-distribution image without
+  learning from out-of-distribution data.
+\newblock In \emph{2020 {IEEE/CVF} Conference on Computer Vision and Pattern
+  Recognition ({CVPR})}, pp.\  10948--10957. Computer Vision Foundation /
+  {IEEE}, 2020.
+\newblock \doi{10.1109/CVPR42600.2020.01096}.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content\_CVPR\_2020/html/Hsu\_Generalized\_ODIN\_Detecting\_Out-of-Distribution\_Image\_Without\_Learning\_From\_Out-of-Distribution\_Data\_CVPR\_2020\_paper.html}.
+
+\bibitem[Huang \& Li(2021)Huang and Li]{Huang_MOS}
+Huang, R. and Li, Y.
+\newblock {MOS}: {T}owards scaling out-of-distribution detection for large
+  semantic space.
+\newblock In \emph{Proceedings of the {IEEE/CVF} Conference on Computer Vision
+  and Pattern Recognition ({CVPR})}, pp.\  8710--8719, June 2021.
+
+\bibitem[Kim et~al.(2018)Kim, Wattenberg, Gilmer, Cai, Wexler, Vi{\'{e}}gas,
+  and Sayres]{kim2018tcav}
+Kim, B., Wattenberg, M., Gilmer, J., Cai, C.~J., Wexler, J., Vi{\'{e}}gas,
+  F.~B., and Sayres, R.
+\newblock Interpretability beyond feature attribution: Quantitative testing
+  with concept activation vectors {(TCAV)}.
+\newblock In \emph{Proceedings of the 35th International Conference on Machine
+  Learning, ({ICML})}, volume~80 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  2673--2682. {PMLR}, 2018.
+\newblock URL \url{http://proceedings.mlr.press/v80/kim18d.html}.
+
+\bibitem[Kim et~al.(2022)Kim, Meister, Ramaswamy, Fong, and
+  Russakovsky]{kim2022hive}
+Kim, S. S.~Y., Meister, N., Ramaswamy, V.~V., Fong, R., and Russakovsky, O.
+\newblock {HIVE}: {E}valuating the human interpretability of visual
+  explanations.
+\newblock In \emph{17th European Conference on Computer Vision ({ECCV})},
+  volume 13672 of \emph{Lecture Notes in Computer Science}, pp.\  280--298.
+  Springer, 2022.
+\newblock URL \url{https://doi.org/10.1007/978-3-031-19775-8\_17}.
+
+\bibitem[Kingma \& Ba(2015)Kingma and Ba]{kingma2014adam}
+Kingma, D.~P. and Ba, J.
+\newblock Adam: {A} method for stochastic optimization.
+\newblock In \emph{3rd International Conference on Learning Representations
+  ({ICLR})}, 2015.
+\newblock URL \url{http://arxiv.org/abs/1412.6980}.
+
+\bibitem[Koh et~al.(2020)Koh, Nguyen, Tang, Mussmann, Pierson, Kim, and
+  Liang]{koh2020concept-bottleneck}
+Koh, P.~W., Nguyen, T., Tang, Y.~S., Mussmann, S., Pierson, E., Kim, B., and
+  Liang, P.
+\newblock Concept bottleneck models.
+\newblock In \emph{Proceedings of the 37th International Conference on Machine
+  Learning ({ICML})}, volume 119 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  5338--5348. {PMLR}, 2020.
+\newblock URL \url{http://proceedings.mlr.press/v119/koh20a.html}.
+
+\bibitem[Lee et~al.(2018)Lee, Lee, Lee, and Shin]{lee2018mahalanobis}
+Lee, K., Lee, K., Lee, H., and Shin, J.
+\newblock A simple unified framework for detecting out-of-distribution samples
+  and adversarial attacks.
+\newblock In \emph{Advances in Neural Information Processing Systems 31: Annual
+  Conference on Neural Information Processing Systems ({NeurIPS})}, pp.\
+  7167--7177, 2018.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2018/hash/abdeb6f575ac5c6676b747bca8d09cc2-Abstract.html}.
+
+\bibitem[Liang et~al.(2018)Liang, Li, and Srikant]{liang2018ODIN}
+Liang, S., Li, Y., and Srikant, R.
+\newblock Enhancing the reliability of out-of-distribution image detection in
+  neural networks.
+\newblock In \emph{6th International Conference on Learning Representations
+  ({ICLR})}. OpenReview.net, 2018.
+\newblock URL \url{https://openreview.net/forum?id=H1VGkIxRZ}.
+
+\bibitem[Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan,
+  Doll{\'{a}}r, and Zitnick]{lin2014mscoco}
+Lin, T., Maire, M., Belongie, S.~J., Hays, J., Perona, P., Ramanan, D.,
+  Doll{\'{a}}r, P., and Zitnick, C.~L.
+\newblock Microsoft {COCO:} {C}ommon objects in context.
+\newblock In \emph{European Conference on Computer Vision - {ECCV}}, volume
+  8693 of \emph{Lecture Notes in Computer Science}, pp.\  740--755. Springer,
+  2014.
+\newblock \doi{10.1007/978-3-319-10602-1\_48}.
+\newblock URL \url{https://doi.org/10.1007/978-3-319-10602-1\_48}.
+
+\bibitem[Lin et~al.(2021)Lin, Roy, and Li]{lin2021MOOD}
+Lin, Z., Roy, S.~D., and Li, Y.
+\newblock {MOOD}: {M}ulti-level out-of-distribution detection.
+\newblock In \emph{Proceedings of the {IEEE/CVF} Conference on Computer Vision
+  and Pattern Recognition}, pp.\  15313--15323, 2021.
+
+\bibitem[Liu et~al.(2020)Liu, Wang, Owens, and Li]{liu2020energy}
+Liu, W., Wang, X., Owens, J.~D., and Li, Y.
+\newblock Energy-based out-of-distribution detection.
+\newblock In \emph{Advances in Neural Information Processing Systems 33: Annual
+  Conference on Neural Information Processing Systems 2020 ({NeurIPS})}, 2020.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2020/hash/f5496252609c43eb8a3d147ab9b9c006-Abstract.html}.
+
+\bibitem[Lundberg \& Lee(2017)Lundberg and Lee]{lundberg2017shapley}
+Lundberg, S.~M. and Lee, S.
+\newblock A unified approach to interpreting model predictions.
+\newblock In \emph{Advances in Neural Information Processing Systems 30: Annual
+  Conference on Neural Information Processing Systems}, pp.\  4765--4774, 2017.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html}.
+
+\bibitem[Markoff(2016)]{markoff2016self}
+Markoff, J.
+\newblock For now, self-driving cars still need humans.
+\newblock
+  \url{https://www.nytimes.com/2016/01/18/technology/driverless-cars-limits-include-human-nature.html},
+  2016.
+\newblock The New York Times.
+
+\bibitem[Mohseni et~al.(2020)Mohseni, Pitale, Yadawa, and
+  Wang]{mohseni2020self}
+Mohseni, S., Pitale, M., Yadawa, J. B.~S., and Wang, Z.
+\newblock Self-supervised learning for generalizable out-of-distribution
+  detection.
+\newblock In \emph{The Thirty-Fourth {AAAI} Conference on Artificial
+  Intelligence}, pp.\  5216--5223. {AAAI} Press, 2020.
+\newblock URL \url{https://ojs.aaai.org/index.php/AAAI/article/view/5966}.
+
+\bibitem[Mozannar \& Sontag(2020)Mozannar and Sontag]{mozannar2020consistent}
+Mozannar, H. and Sontag, D.~A.
+\newblock Consistent estimators for learning to defer to an expert.
+\newblock In \emph{Proceedings of the 37th International Conference on Machine
+  Learning ({ICML})}, volume 119 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  7076--7087. {PMLR}, 2020.
+\newblock URL \url{http://proceedings.mlr.press/v119/mozannar20b.html}.
+
+\bibitem[Murphy(2012)]{murphy2012separ}
+Murphy, K.~P.
+\newblock \emph{Machine Learning: {A} Probabilistic Perspective}, chapter~8,
+  pp.\  271--274.
+\newblock {MIT} press, 2012.
+
+\bibitem[Raghuram et~al.(2021)Raghuram, Chandrasekaran, Jha, and
+  Banerjee]{raghuram2021JTLA}
+Raghuram, J., Chandrasekaran, V., Jha, S., and Banerjee, S.
+\newblock A general framework for detecting anomalous inputs to {DNN}
+  classifiers.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine
+  Learning ({ICML})}, volume 139 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  8764--8775. {PMLR}, 2021.
+\newblock URL \url{http://proceedings.mlr.press/v139/raghuram21a.html}.
+
+\bibitem[Ribeiro et~al.(2016)Ribeiro, Singh, and Guestrin]{ribeiro2016LIME}
+Ribeiro, M.~T., Singh, S., and Guestrin, C.
+\newblock "why should i trust you?" explaining the predictions of any
+  classifier.
+\newblock In \emph{Proceedings of the 22nd {ACM SIGKDD} international
+  conference on knowledge discovery and data mining}, pp.\  1135--1144, 2016.
+
+\bibitem[Shapley(1953)]{shapley1953value}
+Shapley, L.
+\newblock A value for n-person games.
+\newblock \emph{Contributions to the Theory of Games}, \penalty0 (28):\penalty0
+  307--317, 1953.
+
+\bibitem[Sun et~al.(2021)Sun, Guo, and Li]{sun2021react}
+Sun, Y., Guo, C., and Li, Y.
+\newblock {ReAct}: {Out-of-distribution} detection with rectified activations.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  ({NeurIPS})}, pp.\  144--157, 2021.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2021/hash/01894d6f048493d2cacde3c579c315a3-Abstract.html}.
+
+\bibitem[Sundararajan \& Najmi(2020)Sundararajan and
+  Najmi]{sundararajan2020shapley}
+Sundararajan, M. and Najmi, A.
+\newblock The many {Shapley} values for model explanation.
+\newblock In \emph{International Conference on Machine Learning}, pp.\
+  9269--9278. {PMLR}, 2020.
+
+\bibitem[Sundararajan et~al.(2017)Sundararajan, Taly, and
+  Yan]{sundararajan2017IG}
+Sundararajan, M., Taly, A., and Yan, Q.
+\newblock Axiomatic attribution for deep networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning ({ICML})}, volume~70 of \emph{Proceedings of Machine Learning
+  Research}, pp.\  3319--3328. {PMLR}, 2017.
+\newblock URL \url{http://proceedings.mlr.press/v70/sundararajan17a.html}.
+
+\bibitem[Szegedy et~al.(2016)Szegedy, Vanhoucke, Ioffe, Shlens, and
+  Wojna]{szegedy2016inception-v3}
+Szegedy, C., Vanhoucke, V., Ioffe, S., Shlens, J., and Wojna, Z.
+\newblock Rethinking the inception architecture for computer vision.
+\newblock In \emph{Proceedings of the {IEEE} conference on computer vision and
+  pattern recognition}, pp.\  2818--2826, 2016.
+
+\bibitem[Tax \& Duin(2008)Tax and Duin]{tax2008growing}
+Tax, D. M.~J. and Duin, R. P.~W.
+\newblock Growing a multi-class classifier with a reject option.
+\newblock \emph{Pattern Recognition Letters}, 29\penalty0 (10):\penalty0
+  1565--1570, 2008.
+\newblock \doi{10.1016/j.patrec.2008.03.010}.
+\newblock URL \url{https://doi.org/10.1016/j.patrec.2008.03.010}.
+
+\bibitem[Tenenbaum(1999)]{tenenbaum1999concept-learning}
+Tenenbaum, J.~B.
+\newblock \emph{A Bayesian framework for concept learning}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 1999.
+
+\bibitem[Xian et~al.(2018)Xian, Lampert, Schiele, and Akata]{xian2018awa}
+Xian, Y., Lampert, C.~H., Schiele, B., and Akata, Z.
+\newblock Zero-shot learning—a comprehensive evaluation of the good, the bad
+  and the ugly.
+\newblock \emph{{IEEE} transactions on pattern analysis and machine
+  intelligence}, 41\penalty0 (9):\penalty0 2251--2265, 2018.
+
+\bibitem[Xiao et~al.(2010)Xiao, Hays, Ehinger, Oliva, and
+  Torralba]{xiao2010sun}
+Xiao, J., Hays, J., Ehinger, K.~A., Oliva, A., and Torralba, A.
+\newblock Sun database: {L}arge-scale scene recognition from abbey to zoo.
+\newblock In \emph{2010 {IEEE} computer society conference on computer vision
+  and pattern recognition}, pp.\  3485--3492. {IEEE}, 2010.
+
+\bibitem[Yang et~al.(2021)Yang, Zhou, Li, and Liu]{yang2021survey}
+Yang, J., Zhou, K., Li, Y., and Liu, Z.
+\newblock Generalized out-of-distribution detection: {A} survey.
+\newblock \emph{{CoRR}}, abs/2110.11334, 2021.
+\newblock URL \url{https://arxiv.org/abs/2110.11334}.
+
+\bibitem[Yang et~al.(2022)Yang, Wang, Zou, Zhou, Ding, Peng, Wang, Chen, Li,
+  Sun, Du, Zhou, Zhang, Hendrycks, Li, and Liu]{yang2022openood}
+Yang, J., Wang, P., Zou, D., Zhou, Z., Ding, K., Peng, W., Wang, H., Chen, G.,
+  Li, B., Sun, Y., Du, X., Zhou, K., Zhang, W., Hendrycks, D., Li, Y., and Liu,
+  Z.
+\newblock {OpenOOD}: {Benchmarking} generalized out-of-distribution detection.
+\newblock In \emph{NeurIPS}, 2022.
+\newblock URL
+  \url{https://proceedings.neurips.cc//paper_files/paper/2022/hash/d201587e3a84fc4761eadc743e9b3f35-Abstract.html}.
+
+\bibitem[Yeh et~al.(2020)Yeh, Kim, Arik, Li, Pfister, and
+  Ravikumar]{yeh2020completeness}
+Yeh, C., Kim, B., Arik, S.~{\"{O}}., Li, C., Pfister, T., and Ravikumar, P.
+\newblock On completeness-aware concept-based explanations in deep neural
+  networks.
+\newblock In \emph{Advances in Neural Information Processing Systems 33: Annual
+  Conference on Neural Information Processing Systems ({NeurIPS})}, 2020.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2020/hash/ecb287ff763c169694f682af52c1f309-Abstract.html}.
+
+\bibitem[Zhou et~al.(2017)Zhou, Lapedriza, Khosla, Oliva, and
+  Torralba]{zhou2017places}
+Zhou, B., Lapedriza, A., Khosla, A., Oliva, A., and Torralba, A.
+\newblock Places: {A} 10 million image database for scene recognition.
+\newblock \emph{{IEEE} transactions on pattern analysis and machine
+  intelligence}, 40\penalty0 (6):\penalty0 1452--1464, 2017.
+
+\bibitem[Zhou et~al.(2018{\natexlab{a}})Zhou, Sun, Bau, and
+  Torralba]{zhou2018interpretable}
+Zhou, B., Sun, Y., Bau, D., and Torralba, A.
+\newblock Interpretable basis decomposition for visual explanation.
+\newblock In \emph{Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pp.\  119--134, 2018{\natexlab{a}}.
+
+\bibitem[Zhou et~al.(2018{\natexlab{b}})Zhou, Fan, Cui, Bian, Zhu, and
+  Gai]{zhou2018rocket}
+Zhou, G., Fan, Y., Cui, R., Bian, W., Zhu, X., and Gai, K.
+\newblock Rocket launching: A universal and efficient framework for training
+  well-performing light net.
+\newblock In \emph{Thirty-second {AAAI} conference on artificial intelligence},
+  2018{\natexlab{b}}.
+
+\end{thebibliography}

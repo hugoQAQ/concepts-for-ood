@@ -1,0 +1,53 @@
+\section{Related Work}
+\mypara{OOD detection.}
+Starting with a simple baseline for OOD detection based on the maximum softmax probability (MSP) score \cite{hendrycks2016msp}, recent studies have designed various scoring functions based on the outputs from the final or penultimate layers \cite{liang2018ODIN, devries2018learning}, or a combination of different intermediate layers of DNN model \cite{lee2018mahalanobis}.
+Our general framework can be applied to these existing OOD detection methods by choosing a suitable intermediate layer for concept-based interpretation~\footnote{For instance, if an OOD detector makes decisions based on outputs from an intermediate layer $\ell$, the user can explain it using concepts that can reconstruct the feature representations from layer $\ell$, or an earlier layer.}.
+To further improve the OOD uncertainty estimation, several works attempt to finetune the DNN classifier using auxiliary OOD training data \cite{hendrycks2018OE,lee2018training,chen2021atom}.
+Complementary to these, our work is a post-hoc method that aims to explain an already-trained DNN model and its paired OOD detector. 
+Our concept learning algorithm discovers concepts through optimization based on the feature representations from a DNN layer, without modifying the internals of the DNN or the OOD detector. \jihye{details of OOD to appendix}
+
+\mypara{Post-hoc interpretability.}
+Feature attribution is the most commonly used post-hoc explanation method that attributes the decision to local input features~\cite{baehrens2009grad, simonyan2013grad, smilkov2017smoothgrad, sundararajan2017IG}, but recent works have demonstrated its vulnerability to \eg adversarial perturbations~\cite{ghorbani2019fragile,heo2019fooling,slack2020fooling}. 
+Adebayo \etal~\cite{adebayo2020debugging} also conduct experimental analyses and a human subject study to assess the effectiveness of feature attributions under various settings (including on OOD data), and show that feature attributions barely have any visual difference between ID inputs and OOD inputs.
+% Through human subject study, they also illustrate that users do not find the resulting explanations to be intuitive guidance deciding whether to trust model predictions with OOD inputs. 
+
+On the other hand, concept-based explanation is another type of interpretation method, which is designed to be better-aligned with human reasoning \cite{armstrong1983human-concepts,tenenbaum1999concept-learning} and intuition~\cite{ghorbani2019ace,zhou2018interpretable,bouchacourt2019educe,yeh2020completeness}. 
+% Motivated by that human reasoning follows concept-based thinking by grouping similar examples and identifying resembled patterns across them \cite{armstrong1983human-concepts,tenenbaum1999concept-learning}, a line of works aimed to reason about model behaviors in a similar way as human thinking so that the resulting explanations would be more intuitive to humans \cite{kim2018tcav,ghorbani2019ace,zhou2018interpretable,bouchacourt2019educe}. 
+A common implicit assumption in the concept-based explanation literature is {\em linear interpretability}, \ie the concepts lie in a linearly-projected subspace of intermediate DNN layer activations; our work is also based on this assumption.
+While the scope of existing works is confined to explaining DNN classifiers, we extend the use of concept-based interpretability for explaining OOD detectors.
+Our work is inspired by \cite{yeh2020completeness}, and we extend their concept-based explanation method for DNN classifiers to OOD detectors. As discussed in section \ref{sec:concept_learning}, the concept learning objective of \cite{yeh2020completeness} can be obtained as a special case of our concept learning objective for the hyper-parameter setting $\,\lambda_{\textrm{norm}} = \lambda_{\textrm{mse}} = \lambda_{\textrm{sep}} = 0$.
+
+
+\iffalse
+
+The most commonly used post-hoc explanation for DNN prediction is feature attribution, which attributes the decision to local input features \cite{baehrens2009grad, simonyan2013grad, smilkov2017smoothgrad, sundararajan2017IG}. 
+% Notwithstanding the wide adoption of feature attribution to various applications \cite{}, 
+Recent works have demonstrated that feature attributions are vulnerable \cite{ghorbani2019fragile,heo2019fooling,slack2020fooling}. 
+\citeauthor{adebayo2020debugging} also conducts experimental analysis and human subject study to assess the effectiveness of feature attributions under various settings including OOD data, and show that feature attributions barely have visual difference between ID inputs and OOD inputs.
+
+On the other hand, concept-based explanation is another type of interpretability to globally explain how DNN model reasons.
+Motivated by that human reasoning follows concept-based thinking by grouping similar examples and identifying resembled patterns across them \cite{armstrong1983human-concepts,tenenbaum1999concept-learning}, a line of works aimed to reason about model behaviors in a similar way as human thinking so that the resulting explanations would be more intuitive to humans \cite{kim2018tcav,ghorbani2019ace,zhou2018interpretable,bouchacourt2019educe}. 
+A common implicit assumption in concept-based explanation literature is linear interpretability: concepts lie in the linearly projected space of intermediate DNN activations, and our work is also based on this assumption.
+Yet, while the scope of existing works is only focused on only explaining DNN prediction, we extend the use of concept-based interpretability to reasoning OOD detectors.
+
+\fi
+
+
+
+\iffalse
+There is a growing need for post-hoc explanation methods that can be applied to working high performance DNN models that are deployed to the real-world without taking interpretability into consideration during training.
+Recent studies have focused on assessing the effectiveness of post-hoc explanations ranging from human-centric evaluations [2, 5] to functionally-grounded evaluations [19, 20, 21, 22, 10, 23].
+Our work is in line with contributions of evaluation of explanations; albeit with an emphasis on interpreting OOD detectors.
+
+Contrary to the great interest in achieving high OOD detection performance, there is little effort to develop methods that can effectively reason about the detection decisions.
+\cite{adebayo2020debugging} suggests caution for using feature attributions \cite{baehrens2009grad, simonyan2013grad, smilkov2017smoothgrad, sundararajan2017IG} to inspect ID and OOD inputs through empirical assessment and human subject tests.
+As such, our concentration is on developing a method based on human-friendly concepts.
+
+Concept-based explanation is a type of explanation method that .... \cite{kim2018tcav, koh2020concept-bottleneck, ghorbani2019ace}.
+This line of works are based on an implicit assumption that the concepts lie in low-dimensional subspaces of some intermediate DNN activations.
+
+concept-based explanations.. regarding the assumptions that concepts \jihye{emphasize why we chose Yeh et al. as baseline of our work, out of other concept-based explanation works -- limitations of them.} \jihye{we show the inappropriateness of concept-based explanation only with \cite{yeh2020completeness}. Need to elaborate why we chose Yeh et al. as baseline of our work out of other concept-based explanation works.} \\.\\.\\our method is also post-hoc.\\. 
+
+The gold standard for assessing the effectiveness of an explanation is a human subject study (DoshiVelez and Kim, 2017). Poursabzi-Sangdeh et al. (2018) 
+\fi
+

@@ -1,0 +1,115 @@
+% \pdfoutput=1
+\documentclass[nohyperref]{article}
+% \usepackage{arxiv}
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2023} with \usepackage[nohyperref]{icml2023} above.
+
+\usepackage[accepted]{icml2023}
+
+\input{macros/preamble}
+\input{macros/commands}
+\usepackage{natbib}
+
+\graphicspath{{figures/}}
+
+% \newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+\icmltitlerunning{Concept-based Explanations for Out-of-Distribution Detectors}
+
+\begin{document}
+\twocolumn[
+\icmltitle{Concept-based Explanations for Out-of-Distribution Detectors}
+
+\icmlsetsymbol{equal}{*}
+\begin{icmlauthorlist}
+\icmlauthor{Jihye Choi}{uw}
+\icmlauthor{Jayaram Raghuram}{uw}
+\icmlauthor{Ryan Feng}{um}
+\icmlauthor{Jiefeng Chen}{uw}
+\icmlauthor{Somesh Jha}{uw}
+\icmlauthor{Atul Prakash}{um}
+\end{icmlauthorlist}
+
+\icmlaffiliation{uw}{University of Wisconsin - Madison}
+\icmlaffiliation{um}{University of Michigan}
+
+\icmlcorrespondingauthor{Jihye Choi}{jihye@cs.wisc.edu}
+% \icmlcorrespondingauthor{Firstname2 Lastname2}{first2.last2@www.uk}
+
+% You may provide any keywords that you
+% find helpful for describing your paper; these are used to populate
+% the "keywords" metadata in the PDF but will not be shown in the document
+\icmlkeywords{Machine Learning, OOD detection, out-of-distribution, concept vectors, explainability, detection completeness}
+
+\vskip 0.3in
+]
+% \author {
+%     % Authors
+%     Jihye Choi \textsuperscript{\rm 1},
+%     Jayaram Raghuram \textsuperscript{\rm 1},
+%     Ryan Feng \textsuperscript{\rm 2},
+%     Jiefeng Chen \textsuperscript{\rm 1},
+%     Somesh Jha \textsuperscript{\rm 1},
+%     Atul Prakash \textsuperscript{\rm 2}\\
+%     %\vspace*{1.in}
+%     \textsuperscript{\rm 1} University of Wisconsin - Madison ~~ 
+%     \textsuperscript{\rm 2} University of Michigan
+%     \\
+%     % \texttt{\{jihye; jayaramr\}@cs.wisc.edu, ~ rtfeng@umich.edu,} \\ 
+%     % \texttt{\{jiefeng; jha\}@cs.wisc.edu,} ~ \texttt{aprakash@umich.edu}
+%     \texttt{\{jihye, jayaramr, jiefeng, jha\}@cs.wisc.edu} \\
+%     \texttt{\{rtfeng, aprakash\}@umich.edu}
+% }
+
+%To avoid showing date on the document
+% \date{}
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+% \printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+
+
+% \maketitle
+\input{contents/00_abstract}
+
+\input{contents/01_intro}
+
+\input{contents/02_setup}
+
+\input{contents/03_ours}
+
+\input{contents/04_results}
+
+% \input{05_related}
+
+\input{contents/06_conclusion}
+
+% Acknowledgements should only appear in the accepted version.
+\section*{Acknowledgements}
+We thank all the anonymous reviewers for their careful comments and feedback.
+The work is partially supported by Air Force Grant FA9550-18-1-0166, the National Science Foundation (NSF) Grants CCF-FMitF-1836978, IIS-2008559, SaTC-Frontiers-1804648, CCF-2046710, CCF-1652140, and 2039445, and ARO grant number W911NF-17-1-0405. Choi, Feng, Chen, Jha, and Prakash are partially supported by the DARPA-GARD problem under agreement number 885000.
+Raghuram is partially supported through the NSF grants CNS-2112562, CNS-2107060, CNS-2003129, CNS-1838733, CNS-1647152, and the US Department of Commerce grant 70NANB21H043.
+
+\bibliographystyle{icml2023}
+\bibliography{references}
+
+% \input{08_checklist}
+\input{contents/09_appendix}
+
+%\printbibliography
+
+\end{document}
+
+
+
+

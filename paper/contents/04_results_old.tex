@@ -1,0 +1,376 @@
+\section{Experiments}
+\label{subsec:results}
+
+\iffalse
+
+\begin{table*}[tb]
+    \centering
+    \begin{adjustbox}{width=1\columnwidth,center}
+		\begin{tabular}{l|l|l|c|c|c|c|c|c|c|c}
+			\toprule
+			\multirow{3}{0.001\linewidth}{OOD detector} & \multirow{3}{0.10\linewidth}{Hyper-\\parameters} &
+			\multirow{3}{0.05\linewidth}{ $\eta^{}_{\bff}(\bfC)$} & \multicolumn{8}{c}{OOD data} \\ \cline{4-11}
+    		& & & \multicolumn{2}{c|}{\texttt{Places}} & \multicolumn{2}{c|}{\texttt{SUN}} & \multicolumn{2}{c|}{\texttt{Textures}} & \multicolumn{2}{c}{\texttt{iNaturalist}}\\ \cline{4-11}
+    		& & & $\eta^{}_{\bff, S}(\bfC)$ & $J_{\textrm{sep}}(\bfC, \bfC')$ & $\eta^{}_{\bff, S}(\bfC)$ & $J_{\textrm{sep}}(\bfC, \bfC')$ & $\eta^{}_{\bff, S}(\bfC)$ & $J_{\textrm{sep}}(\bfC, \bfC')$ & $\eta^{}_{\bff, S}(\bfC)$ & $J_{\textrm{sep}}(\bfC, \bfC')$ \\ \hline \hline
+			\multirow{4}{0.10\linewidth}{MSP \\ \citep{hendrycks2016msp}} 
+			& $(0, 0, 0)$ & 0.977 \pm 0.0006 & 0.774 \pm 0.001 & 0.694 \pm 0.0153 & 0.782 \pm 0.001 & 1.088 \pm 0.0175 & 0.593 \pm 0.0013 & 0.765 \pm 0.0157 & 0.878 \pm 0.0008 & 1.075 \pm 0.0191\\
+			& $(10, 0.1, 0)$ & \textbf{0.994} \pm 0.0004 & 0.947 \pm 0.0004 & 1.892 \pm 0.0393 & 0.946 \pm 0.0004 & 3.074 \pm 0.0531 & 0.920 \pm 0.0005 & 3.577 \pm 0.1292 & \textbf{0.967} \pm 0.0004 &  \\
+			& $(0, 0, 50)$ & 0.980 \pm 0.0005 & 0.814 \pm 0.0008 & 2.533 \pm 0.0714 & 0.816 \pm 0.0009 & 4.295 \pm 0.1048 & 0.773 \pm 0.0010 & 3.147 \pm 0.2076 & 0.864 \pm 0.0007 &\\
+			& $(10, 0.1, 50)$ & 0.984 \pm 0.0004 & \textbf{0.960} \pm 0.0004 & 2.756 \pm 0.0854 & \textbf{0.961} \pm 0.0005 & 4.442 \pm 0.0830 & \textbf{0.937} \pm 0.0004 & \textbf{0.439} \pm 0.0175 & 0.946 \pm 0.0004 & \textbf{0.795} \pm 0.0473\\ \hline 
+			\multirow{4}{0.10\linewidth}{ODIN \\ \citep{liang2018ODIN}} 
+			& $(0, 0, 0)$ & 0.977 \pm 0.0006 & 0.742 \pm 0.0011 & 0.0 & 0.745 \pm 0.0010 & 0.0 & 0.618 \pm 0.0013 & 0.0 & 0.906 \pm 0.0007 & 0.0\\
+			& $(\expnum{1}{+8}, 0.1, 0)$ & \textbf{0.994} \pm 0.0004 & 0.951 \pm 0.0004 & -0.118 \pm 0.0099 & 0.958 \pm 0.0004 & -0.054 \pm 0.0119 & 0.934 \pm 0.0004 & -0.245 \pm 0.0133 & 0.935 \pm 0.0004 & -0.345 \pm 0.0153\\
+			& $(0, 0, 50)$ & 0.987 \pm 0.0004 & 0.899 \pm 0.0007 & \textbf{0.492} \pm 0.0215 & 0.911 \pm 0.0006 & 0.520 \pm 0.0187 & 0.793 \pm 0.0008 & 0.422 \pm 0.0175 & 0.971 \pm 0.0004 & 0.318 \pm 0.0343\\
+			& $(\expnum{1}{8}, 0.1, 50)$ & 0.991 & \textbf{0.973} & 0.355 & \textbf{0.969} & \textbf{0.356} & \textbf{0.945} & 0.405 & \textbf{0.982} & 0.308 \\ \hline
+			\multirow{4}{0.10\linewidth}{General-ODIN \\ \citep{hsu2020GeneralizedODIN}} 
+			& $(0, 0, 0)$ & 0.990 \pm 0.0004 & 0.869 & 0.0 & 0.869 & 0.0 & 0.850 & 0.0 & 0.981 & 0.0\\
+			& $(10^8, 0.1, 0)$ & \textbf{0.994} \pm 0.0004 & 0.951 \pm 0.0006 & 0.161 & 0.959 & 0.215 & 0.936 & 0.411 & 0.936 & 0.151\\
+			& $(0, 0, 50)$ & 0.987 & 0.899 & \textbf{0.373} & 0.911 & 0.342 & 0.790 & \textbf{0.414} & 0.970 & \textbf{0.337}\\
+			& $(10^8, 0.1, 50)$ & 0.991 & \textbf{0.973} & 0.355 & \textbf{0.969} & \textbf{0.356} & \textbf{0.945} & 0.405 & \textbf{0.982} & 0.308 \\ \hline
+			\multirow{4}{0.10\linewidth}{Energy \\ \citep{liu2020energy}} 
+			& $(0, 0, 0)$ & 0.977 \pm 0.0006 & 0.671 \pm 0.0012 & 0.0 & 0.682 \pm 0.0012 & 0.0 & 0.557 \pm 0.0014 & 0.0 & 0.871 \pm 0.0007 & 0.0\\
+			& $(1. 0.1, 0)$ & \textbf{0.993} \pm 0.0005 & \textbf{0.965} \pm 0.0004 & 0.191 \pm 0.0126 & \textbf{0.963} \pm 0.0004 & 0.326 \pm 0.0133 & \textbf{0.960} \pm 0.0003 & 0.110 \pm 0.0117 & \textbf{0.949} \pm 0.0004 & 0.770 \pm 0.0334\\
+			& $(0, 0, 50)$ & 0.987 \pm 0.0005 & 0.779 \pm 0.0010 & 0.4703 \pm 0.0199 & 0.793 \pm 0.0009 & 0.427 \pm 0.0153 &  0.767 \pm 0.0010 & 0.531 \pm 0.0184 & 0.911 \pm 0.0006 & 0.263 \pm 0.0297 \\
+			& $(1, 0.1, 50)$ & 0.980 \pm 0.0005 & 0.943 \pm 0.0005 & 0.534 \pm 0.0218 & \textbf{0.941} \pm 0.0005 & 0.534 \pm 0.0175 & 0.936 \pm 0.0005 & 0.658 \pm 0.0212 & 0.927 \pm 0.0005 & 0.291 \pm 0.0319 \\ \hline
+			\multirow{4}{0.10\linewidth}{Mahal \\ \citep{lee2018mahalanobis}} 
+			& $(0, 0, 0)$ & 0.990 & 0.860 & 0.0 & 0.860 & 0.0 & 0.831 & 0.0 & 0.972 & 0.0 \\
+			& $(0.1, 0.1, 0)$ & \textbf{0.994} & 0.962 & 0.153 & 0.963 & 0.176 & 0.962 & 0.351 & 0.955 & 0.169\\
+			& $(0, 0, 50)$ & 0.985 & 0.850 & \textbf{0.430} & 0.883 & 0.362 & 0.774 & \textbf{0.429} & 0.926 & \textbf{0.386} \\
+			& $(0.1, 0.1, 50)$ & 0.991 & \textbf{0.971} & 0.370 & \textbf{0.970} & \textbf{0.388} & \textbf{0.970} & 0.397 & \textbf{0.972} & 0.351 \\ \bottomrule
+		\end{tabular}
+	\end{adjustbox}
+	\caption[]{\small \textbf{Results of concept learning with different parameter settings across various OOD detectors and OOD datasets.} 
+% 	$\bfC'$ denotes a set of concepts discovered by baseline \citep{yeh2020completeness} (\ie $\lambda_\textrm{mse} = 0, \lambda_\textrm{norm} = 0, \lambda_\textrm{sep} = 0$).
+	Hyperparameters are in the order of $(\lambda_\textrm{mse}, \lambda_\textrm{norm}, \lambda_\textrm{sep})$. Larger values are better for all the metrics. \textbf{Bold} numbers indicate the best results (across the rows) for a given OOD detection method and dataset. Note that by definition of $J_{\textrm{sep}}(\bfC, \bfC')$ (Eqn. \ref{eq:relative-separability}), the relative concept separability of the baseline~\citep{yeh2020completeness} is always $0$, \ie $J_{\textrm{sep}}(\bfC', \bfC') = 0$.}
+	\label{tab:concept-learning-results}
+\end{table*}
+
+\fi
+
+\iffalse
+
+We perform experiments to evaluate the proposed method and address the following questions:
+\begin{enumerate}[start=1,label={\bfseries Q\arabic*.}]
+    \item \label{Q1} Does our concept learning objective effectively encourage concepts to have the desired properties of detection completeness and concept separability?
+    \item \label{Q2} Are the proposed evaluation metrics well-aligned with the interpretability of the resulting concept-based explanations?
+    % Are the proposed evaluations metrics beneficial for better interpretability of resulting concept-based explanations?
+    % \jayaram{Are the proposed evaluation metrics effective at providing better interpretability for the resulting concept-based explanations?}
+    % Does a high detection completeness score of concepts imply a more accurate explanaation of the OOD detector? Does better concept separability lead to a more distinctive explanation between ID- and OOD-detected data?
+    \item \label{Q3} Given concepts learned by our approach, what insights can we provide for the OOD detector?
+\end{enumerate}
+
+Our main findings are summarized as follows:
+\begin{enumerate}[start=1,label={\bfseries A\arabic*.}]
+    \item In accordance with our design intention, our $\ell_2$ norm-based regularization and MSE regularization not only improve the detection completeness by large margin, but also the classification completeness even further. 
+    The proposed separability regularization effectively improves concept separability, and when these three terms are used together in concept learning objective, we can achieve the highest detection completeness and concept separability (see Table \ref{tab:concept-learning-results}).
+    \item Concepts with a high completeness score enable to mimic the original behavior of the OOD detector more precisely, hence leading to more \textit{accurate} explanations based on the concepts (see Fig. \ref{fig:score-distribution}). 
+    Also, concepts with a higher concept separability score lead to more \textit{visually-distinctive} interpretations between ID and OOD data by having more distinguishable concept-score patterns (see Fig. \ref{fig:high_separa_interpretatbility}).
+    % Concepts learned by our method enable more \textit{accurate}, and more \textit{visually distinctive} interpretations, compared to the concepts learned by the baseline method (\citep{yeh2020completeness}).
+    \item We can rank the importance of each concept towards OOD detection using the Shapley value modified with our per-class detection completeness metric. 
+    When the concepts are only targeted at explaining the DNN classifier (as in the baseline \citep{yeh2020completeness}), the behavior of the OOD detector is merely described by the common set of concepts that are important for the DNN classifier.
+    On the other hand, when not only the DNN classifier but also the OOD detector is taken into consideration during concept learning (\ie our method), we obtain a more diverse and expanded set of concepts, and different concepts play a major role in interpreting the classification and detection results (see Fig. \ref{fig:shap_buffalo}). 
+    % identify based on what concepts an OOD detector makes decisions.
+    % We can identify the top concepts that contribute to the OOD detector's decisions using  
+\end{enumerate}
+
+\fi
+
+% \subsection{Setup}\label{sec:setup}
+We briefly describe the experimental setup here and provide additional details in Appendix \ref{sec:appendix-implementation-details}.
+% We briefly describe the setup of our experiments to address the above questions. See Appendix \ref{sec:appendix-implementation-details} for further details.
+% For reproducibility, we have released our anonymized source code ~\footnote{\url{https://anonymous.4open.science/r/Concept-For-OOD-CE1B/}}.
+
+\mypara{Datasets.} For the ID dataset, we use Animals with Attributes (AwA) \citep{xian2018awa} with 50 animal classes, and split it into a train set (29841 images), validation set (3709 images), and test set (3772 images).
+We use the MSCOCO dataset \citep{lin2014mscoco} as the auxiliary OOD dataset $\Douttr$ for training and validation.
+For the OOD test dataset $\Doutte$, we follow a common setting in the literature of large-scale OOD detection \citep{Huang_MOS} and use three different image datasets: \texttt{Places365} \citep{zhou2017places}, \texttt{SUN} \citep{xiao2010sun}, and \texttt{Textures} \citep{cimpoi2014textures}.
+% , \texttt{iNaturalist} \citep{van2018inaturalist}; all resized to the input size $224 \times 224$.
+
+% \textbf{OOD detector.} We apply our general approach to intepret four popular OOD detection methods in the literature: MSP \citep{hendrycks2016msp}, ODIN \citep{liang2018ODIN}, Energy \citep{liu2020energy} and Mahalanobis \citep{lee2018mahalanobis} (henceforth abbreviated to Mahal).
+
+% \jihye{real-world high resolution image data}
+% \textbf{DNN classifier.} The OOD detectors are paired with the widely-used Inception-V3 model \citep{szegedy2016inception-v3} (following the common setup in prior works \citep{yeh2020completeness, ghorbani2019ace, koh2020concept-bottleneck, kim2018tcav}) trained on AwA, which yields $0.921$ test accuracy. 
+
+
+\mypara{Models.}
+We apply our framework to interpret five prominent OOD detectors from the literature: MSP~\citep{hendrycks2016msp}, ODIN~\citep{liang2018ODIN}, Generalized-ODIN~\citep{hsu2020GeneralizedODIN}, Energy~\citep{liu2020energy} and Mahalanobis~\citep{lee2018mahalanobis}.
+The OOD detectors are paired with the widely-used Inception-V3 model~\citep{szegedy2016inception-v3} (following the setup in prior works~\citep{yeh2020completeness, ghorbani2019ace, kim2018tcav}) trained on the Animals-with-Attributes (AwA) dataset~\citep{xian2018awa}, which has a test accuracy of $92.10 \%$. 
+
+\mypara{Metrics.}
+For each set of concepts learned with different OOD detectors and hyperparameters, we report the classification completeness $\eta^{}_{\bff}(\bfC)$, detection completeness $\eta^{}_{\bff, S}(\bfC)$, and the relative concept separability metric (defined below). 
+In contrast to the completeness scores that are almost always bounded to the range $[0, 1]$, it is hard to gauge the possible range of the separability score $J_{\textrm{sep}}(\bfC)$ (or $J^y_{\textrm{sep}}(\bfC)$) across different settings (datasets, classification models, and OOD detectors), and whether the value represents a significant improvement in separability.
+Hence, we define the \textit{relative concept separability}, which captures the relative improvement in concept separability using concepts $\bfC$ compared to a different set of concepts $\bfC'$, as follows
+% between two different sets of concepts, as follows
+% \vspace{-1mm}
+\begin{equation}
+\label{eq:relative-separability}
+J_{\textrm{sep}}(\bfC, \bfC') = \textrm{Median}\left( \left\{\frac{J^y_{\textrm{sep}}(\bfC) ~-~ J^y_{\textrm{sep}}(\bfC')}{J^y_{\textrm{sep}}(\bfC')}\right\}_{y=1}^L \right).   
+\end{equation}
+% This metric measures the median of the relative increase in the per-class separability using concepts $\bfC$, compared to that of using a different set of concepts $\bfC'$.
+We choose $\bfC'$ to be the set of concepts learned by the baseline~\citep{yeh2020completeness}, which is a special case of our learning objective when $\,\lambda_\textrm{mse} = \lambda_\textrm{norm} = \lambda_\textrm{sep} = 0$.
+The set of concept $\bfC$ are obtained via our concept learning objective, with various combinations of hyperparameter values.
+
+\begin{table*}[htb]
+    \centering
+    % \begin{adjustbox}{width=1\columnwidth,center}
+    \begin{adjustbox}{width=1\textwidth,center}
+		\begin{tabular}{l|l|l|c|c|c|c|c|c}
+			\toprule
+			\multirow{3}{0.001\linewidth}{OOD detector} & \multirow{3}{0.10\linewidth}{Hyper-\\parameters} &
+			\multirow{3}{0.05\linewidth}{ $\eta^{}_{\bff}(\bfC) \uparrow$} & \multicolumn{6}{c}{Test OOD dataset} \\ \cline{4-9}
+    		& & & \multicolumn{2}{c|}{\texttt{Places}} & \multicolumn{2}{c|}{\texttt{SUN}} & \multicolumn{2}{c}{\texttt{Textures}}\\ \cline{4-9}
+    		& & & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ \\ \hline \hline
+			%
+            \multirow{4}{0.10\linewidth}{MSP} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.774 $\pm$ 0.0010 & 0.694 $\pm$ 0.0153 & 0.782 $\pm$ 0.0010 & 1.088 $\pm$ 0.0175 & 0.593 $\pm$ 0.0013 & 0.765 $\pm$ 0.0157\\
+			& $(10, 0.1, 0)$ & \underline{\textbf{0.994}} $\pm$ 0.0004 & \underline{0.947} $\pm$ 0.0004 & 1.892 $\pm$ 0.0393 & \underline{0.946} $\pm$ 0.0004 & 3.074 $\pm$ 0.0531 & \underline{0.920} $\pm$ 0.0005 & \underline{3.577} $\pm$ 0.1292\\
+			& $(0, 0, 50)$ & 0.980 $\pm$ 0.0005 & 0.814 $\pm$ 0.0008 & \underline{2.533} $\pm$ 0.0714 & 0.816 $\pm$ 0.0009 & \underline{4.295} $\pm$ 0.1048 & 0.773 $\pm$ 0.0010 & 3.147 $\pm$ 0.2076\\
+			& $(10, 0.1, 50)$ & \underline{0.984} $\pm$ 0.0004 & \underline{\textbf{0.960}} $\pm$ 0.0004 & \underline{\textbf{2.756}} $\pm$ 0.0854 & \underline{\textbf{0.961}} $\pm$ 0.0005 & \underline{\textbf{4.442}} $\pm$ 0.0830 & \underline{\textbf{0.937}} $\pm$ 0.0004 & \underline{\textbf{3.587}} $\pm$ 0.2145\\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{ODIN} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.742 $\pm$ 0.0011 & 0.444 $\pm$ 0.0119 & 0.745 $\pm$ 0.0010 & 0.710 $\pm$ 0.0156 & 0.618 $\pm$ 0.0013 & 0.501 $\pm$ 0.0121 \\
+			& $(10^8, 0.1, 0)$ & \underline{\textbf{0.994}} $\pm$ 0.0004 & \underline{0.951} $\pm$ 0.0004 & 1.166 $\pm$ 0.0303 & \underline{0.958} $\pm$ 0.0004 & 2.135 $\pm$ 0.0450 & \underline{0.934} $\pm$ 0.0004 & 2.793 $\pm$ 0.0865\\
+			& $(0, 0, 50)$ & 0.987 $\pm$ 0.0004 & 0.899 $\pm$ 0.0007 & \underline{1.785} $\pm$ 0.0669 & 0.911 $\pm$ 0.0006 & \underline{3.814} $\pm$ 0.0768 & 0.793 $\pm$ 0.0008 & \underline{3.046} $\pm$ 0.2845\\
+			& $(10^8, 0.1, 50)$ & \underline{0.991} $\pm$ 0,0005 & \underline{\textbf{0.973}} $\pm$ 0.0009 & \underline{\textbf{1.813}} $\pm$ 0.0268 & \underline{\textbf{0.969}} $\pm$ 0.0010 & \underline{\textbf{4.000}} $\pm$ 0.0094 & \underline{\textbf{0.945}} $\pm$ 0.0006 & \underline{\textbf{3.662}} $\pm$ 0.1005\\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{General-ODIN} 
+			& $(0, 0, 0)$ & 0.988 $\pm$ 0.0004 & 0.769 $\pm$ 0.0004 & 0.506 $\pm$ 0.0165 & 0.719 $\pm$ 0.0014 & 0.816 $\pm$ 0.0192 & 0.605 $\pm$ 0.0013 & 0.558 $\pm$ 0.1683\\
+			& $(10^6, 0.1, 0)$ & \underline{\textbf{0.995}} $\pm$ 0.0004 & \underline{0.951} $\pm$ 0.0006 & 1.461 $\pm$ 0.0321 & \underline{0.960} $\pm$ 0.0005 & 3.007 $\pm$ 0.0316 & \underline{0.940} $\pm$ 0.0008 & 2.619 $\pm$ 0.1077\\
+			& $(0, 0, 50)$ & 0.981 $\pm$ 0.0004 & 0.859 $\pm$ 0.0007 & \underline{1.814} $\pm$ 0.0685 & 0.803 $\pm$ 0.0006 & \underline{4.204} $\pm$ 0.0159 & 0.826 $\pm$ 0.0008 & \underline{\textbf{4.014}} $\pm$ 0.2246\\
+			& $(10^6, 0.1, 50)$ & \underline{0.990} $\pm$ 0.0005 & \underline{\textbf{0.971}} $\pm$ 0.0010 & \underline{\textbf{1.835}} $\pm$ 0.0669 & \underline{\textbf{0.963}}$\pm$ 0.0004 & \underline{\textbf{4.287}} $\pm$ 0.0284 & \underline{\textbf{0.951}} $\pm$ 0.0005 & \underline{3.695} $\pm$ 0.1921 \\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{Energy} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.671 $\pm$ 0.0012 & 0.453 $\pm$ 0.0121 & 0.682 $\pm$ 0.0012 & 0.675 $\pm$ 0.0148 & 0.557 $\pm$ 0.0014 & 0.521 $\pm$ 0.0131\\
+			& $(1. 0.1, 0)$ & \underline{\textbf{0.993}} $\pm$ 0.0005 & \underline{\textbf{0.965}} $\pm$ 0.0004 & 1.266 $\pm$ 0.0319 & \underline{\textbf{0.963}} $\pm$ 0.0004 & 2.125 $\pm$ 0.0413 & \underline{\textbf{0.960}} $\pm$ 0.0003 & 2.648 $\pm$ 0.0596\\
+			& $(0, 0, 50)$ & \underline{0.987} $\pm$ 0.0005 & 0.779 $\pm$ 0.0010 & \underline{\textbf{1.920}} $\pm$ 0.0725 & 0.793 $\pm$ 0.0009 & \underline{\textbf{3.659}} $\pm$ 0.0659 & 0.767 $\pm$ 0.0010 & \underline{\textbf{4.397}} $\pm$ 0.2165 \\
+			& $(1, 0.1, 50)$ & 0.980 $\pm$ 0.0005 & \underline{0.943} $\pm$ 0.0005 & \underline{1.839} $\pm$ 0.0662 & \underline{0.941} $\pm$ 0.0005 & \underline{3.421} $\pm$ 0.0619 & \underline{0.936} $\pm$ 0.0005 & \underline{3.917} $\pm$ 0.1691 \\ \hline
+			%
+			\multirow{4}{0.10\linewidth}{Mahala-\\nobis} 
+			& $(0, 0, 0)$ & 0.990 $\pm$ 0.0007 & 0.715 $\pm$ 0.0011 & 0.571 $\pm$ 0.0110 & 0.736 $\pm$ 0.0011 & 0.822 $\pm$ 0.0165 & 0.591 $\pm$ 0.0011 & 0.564 $\pm$ 0.0203 \\
+			& $(0.1, 0.1, 0)$ & \underline{\textbf{0.994}} $\pm$ 0.0004 & \underline{0.950} $\pm$ 0.0009 & 1.532 $\pm$ 0.0351 & \underline{0.960} $\pm$ 0.0010 & 2.276 $\pm$ 0.0466 & \underline{0.938} $\pm$ 0.0004 & 2.915 $\pm$ 0.1132\\
+			& $(0, 0, 50)$ & 0.985 $\pm$ 0.0004 & 0.880 $\pm$ 0.0005 & \underline{2.550} $\pm$ 0.0681 & 0.883 $\pm$ 0.0006 & \underline{4.091} $\pm$ 0.1013 & 0.774 $\pm$ 0.0007 & \underline{4.274} $\pm$ 0.2305\\
+			& $(0.1, 0.1, 50)$ & \underline{0.992} $\pm$ 0.0006 & \underline{\textbf{0.961}} $\pm$ 0.0005 & \underline{\textbf{2.616}} $\pm$ 0.0857 & \underline{\textbf{0.966}} $\pm$ 0.0005 & \underline{\textbf{4.325}} $\pm$ 0.0055 & \underline{\textbf{0.949}} $\pm$ 0.0003 & \underline{\textbf{4.308}} $\pm$ 0.2011 \\ \bottomrule
+		\end{tabular}
+	\end{adjustbox}
+	\caption[]{
+	\small \textbf{Results of concept learning with different parameter settings across various OOD detectors and test OOD datasets.} 
+	The ID dataset is AwA for both training and test, and the auxiliary OOD dataset is MSCOCO.
+% 	$\bfC'$ denotes a set of concepts discovered by baseline \citep{yeh2020completeness} (\ie $\lambda_\textrm{mse} = 0, \lambda_\textrm{norm} = 0, \lambda_\textrm{sep} = 0$).
+	Hyperparameters are in the order of $(\lambda_\textrm{mse}, \lambda_\textrm{norm}, \lambda_\textrm{sep})$, and their values are set based on the scale of corresponding regularization terms in Eqn. (\ref{equ: concept learning}), for a specific choice of the OOD detector. Further investigation, including an ablation study on each regularization term can be found in Appendix \ref{sec:appendix-concept-learning-ablation}.
+% 	Larger values are better for all the metrics. 
+	Across the rows (for a given OOD detector and OOD dataset), the best value is \textbf{boldfaced}, and second best value is \underline{underscored}.
+	The $95\%$ confidence intervals are estimated by bootstrapping the test set over $200$ trials.
+% 	\textbf{Bold} numbers indicate the best results (across the rows) for a given OOD detection method and dataset. 
+	%Note that by definition of $J_{\textrm{sep}}(\bfC, \bfC')$ (Eqn. \ref{eq:relative-separability}), the relative concept separability of the baseline~\citep{yeh2020completeness} is always $0$, \ie $J_{\textrm{sep}}(\bfC', \bfC') = 0$.
+	}
+	\label{tab:concept-learning-results}
+\vspace{-.2in}
+\end{table*}
+
+
+
+
+% \subsection{Results}\label{subsec:results}
+\subsection{Effectiveness of Our Method}
+In this subsection, we carry out experiments to answer the following question: \textit{does our concept learning objective effectively encourage concepts to have the desired properties of detection completeness and concept separability?}
+%
+% In this subsection, we elaborate on the experiments to answer the first question (Q1) on the effectiveness of our concept learning objective.
+Table~\ref{tab:concept-learning-results} summarizes the results of concept learning with various combinations of hyperparameters for the proposed regularization terms in Eqn. (\ref{equ: concept learning}): \textbf{i)} all the hyperparameters are set to $0$ (first row); \textbf{ii)} only the terms directly relevant to detection completeness (\ie reconstruction error $J_{\textrm{norm}}(\bfC, \bfg)$ and mean-squared error $J_{\textrm{mse}}(\bfC, \bfg)$) are included (second row); \textbf{iii)} only the term responsible for concept separability $J_{\textrm{sep}}(\bfC)$ is included (third row); \textbf{iv)} all the regularization terms are included (fourth row).
+
+% We test how effectively our regularization terms improve detection completeness and concept separability, without sacrificing the classification completeness.
+In all cases, we observe that the baseline achieves a high enough classification completeness score, but the lowest detection completeness and concept separability.
+This indicates that the {\em concepts discovered by \citep{yeh2020completeness} would be sufficient to describe the DNN classifier, but using the same set of concepts would be inappropriate for the OOD detector.}
+% We also observe that concept separability regularization term $J_{\textrm{sep}}(\bfC) > 0$ improves the relative concept separability, and when brought together with $J_{\textrm{norm}}(\bfC, \bfg)$ and  $J_{\textrm{mse}}(\bfC, \bfg) = 0$, can improve the detection completeness even further.
+% By having $\lambda_\textrm{mse} > 0, \lambda_\textrm{norm} > 0, \lambda_\textrm{sep} = 0$, we observe that $\eta^{}_{\bff, S}(\bfC)$ is always improved by large margin compared to baseline.
+%
+% We observe that the relative concept separability $J_{\textrm{sep}}(\bfC, \bfC')$ is largest most often for the setting where $\lambda_\textrm{mse} = \lambda_\textrm{norm} = 0, \text{ and } \lambda_\textrm{sep} > 0$ (third row).
+% However, the detection completeness does not improve and in some cases drops compared to the baseline setting, suggesting that there is a tradeoff between maximizing the detection completeness and concept separability.
+%
+In contrast, our method significantly improves the detection completeness (and even the classification completeness) by having $\lambda_\textrm{mse} > 0, \lambda_\textrm{norm} > 0$ and concept separability by having $\lambda_\textrm{sep} > 0$, compared to the baseline.
+% In accordance with our design intention, our $\ell_2$ norm-based regularization and MSE regularization not only improve the detection completeness by large margin, but also the classification completeness even further.
+Moreover, the three terms make the best synergy together in almost all cases.
+% \jihye{For instance, given the ODIN detector and the \texttt{SUN} dataset, including our proposed regularization terms improves the detection completeness of concepts from $0.869$ to $0.969$, and the relative concept separability is increased by $0.356$, compared to when concepts are learned without the regularization terms.}
+% In this setting, there is a slight decrease the relative concept separability compared to the case where only the regularization term $J_{\textrm{sep}}(\bfC)$ is included (third row). In other words, there is a tradeoff wherein we may have to sacrifice the concept separability a little in order to achieve the best possible detection completeness.
+
+\iffalse
+\mypara{Choice of Hyperparameters.}
+\label{sec:hyperparameter}
+In Table \ref{tab:concept-learning-results}, we set the values of $\lambda_{\textrm{norm}}, \lambda_{\textrm{mse}}$ and $\lambda_{\textrm{sep}}$ based on the scale of corresponding regularization terms in Eqn. (\ref{equ: concept learning}) (\ie $J_{\textrm{norm}}(\bfC, \bfg),  J_{\textrm{mse}}(\bfC, \bfg)$ and $ J_{\textrm{sep}}(\bfC)$, respectively) for a specific choice of the OOD detector.
+Further investigation including an ablation study on each regularization term can be found in Appendix \ref{sec:appendix-concept-learning-ablation}.
+From the ablation study, we note that there is a trade-off between concept separability and coherency (defined in Eqn. \ref{eq:coherency}).
+This implies that high concept separability ensures easily distinguishable score patterns between detected-ID and detected-OOD inputs, but the discovered concepts may not be understandable to humans, hence the user needs to balance the degree of $\lambda_{\textrm{sep}}$ depending on the application of interest. 
+\fi
+% Interestingly, we observe that the concepts targeted for a particular type of OOD detector can also be applied to different types of OOD detectors (\ie the learned concepts exhibit transferability). 
+% Transferability of concepts across different OOD detectors is also discussed in Appendix \ref{sec:appendix-concept-learning-transfer}.
+\iffalse
+\begin{figure}[h]
+\centering
+\subfigure{\includegraphics[width=0.31\textwidth]{figures/distr_msp_target.jpg}} 
+\subfigure{\includegraphics[width=0.31\textwidth]{figures/distr_msp_yeh.jpg}} 
+\subfigure{\includegraphics[width=0.31\textwidth]{figures/distr_msp_ours.jpg}} 
+\caption{\textbf{Detection completeness and estimated density of OOD score $S(\bfx, \bff)$ from MSP detector.}
+\textbf{Left}: Target distribution of $S(\bfx, \bff)$ in the canonical world. 
+\textbf{Mid}: Distribution of $\Scon(\bfx, \bff)$ in the concept world, using concepts learned by \citep{yeh2020completeness} ($\,\lambda_\textrm{mse} = \lambda_\textrm{norm} = \lambda_\textrm{sep} = 0$).
+\textbf{Right}: Distribution of $\Scon(\bfx, \bff)$ in the concept world, using concepts learned by our method ($\lambda_\textrm{mse} = 10, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 50$). Comparison is made between AwA test set (ID; blue) vs. SUN (OOD; red).}
+\label{fig:score-distribution-msp}
+\end{figure}
+\fi
+
+
+% \subsection{Interpretability of the Learned Concepts (Q2.)}
+% \subsection{Our Metrics and Interpretability (Q2.).}
+% \mypara{Reconstruction of $\hat{\calZ}$.}
+
+\mypara{Detection completeness and accurate reconstruction of $\calZ$.}
+% Other than observing increased detection completeness, 
+% To gain further insights on how accurately the feature representation space can be reconstructed from concept scores, 
+% Fig. \ref{fig:score-distribution} compares the distribution of the OOD detector scores in the canonical world and concept world using the concepts with different level of detection completeness.
+% learned by baseline and ours. 
+% Taking MSP and Energy detectors as example, 
+Additionally, we observe whether the proposed evaluation metrics are well-aligned with the interpretability of the resulting concept-based explanations.
+In Fig. \ref{fig:score-distribution-msp}, we observe that concepts by ~\citep{yeh2020completeness} with low detection completeness ($\eta^{}_{\bff, S}(\bfC) = 0.782$ for MSP and $\eta^{}_{\bff, S}(\bfC) = 0.682$ for Energy) lead to a strong mismatch between the score distributions on both ID data and OOD data.
+In contrast, concepts learned by our method with high detection completeness ($\eta^{}_{\bff, S}(\bfC) = 0.961$ for the MSP detector, and $\eta^{}_{\bff, S}(\bfC) = 0.941$ for the Energy detector) approximate the target score distributions more closely on both ID data and OOD data.
+% Overall, our experiments find that the proposed regularization terms reduce the performance gap (between the canonical world and concept world) of both the classifier and the OOD detector, leading to more \textit{accurate} explanations.
+% This validates our hypothesis that accurate reconstruction of the feature representation space $\hat{\calZ}$ and the score functions are both crucial for closing the performance gap between the canonical world and concept world of both the classifier and the OOD detector.
+By reducing the performance gap of OOD detector between canonical world and concept world, it leads to more \textit{accurate} explanations for OOD detectors.
+% \begin{tcolorbox}
+% {\textbf{Takeaway}: Our proposed concept learning objective can achieve high detection completeness and concept separability given various OOD detectors. By reducing the performance gap of OOD detector between canonical world and concept world, it leads to more \textit{accurate} explanations for OOD detectors.} 
+% \end{tcolorbox}
+
+\iffalse
+\begin{figure}[bt]
+\centering
+\subfloat[Set 1 with low concept separability, detected-ID \label{fig:low_in}]{\includegraphics[width=0.45\columnwidth]{yeh_class17_AwA2_top10_detected_Energy.jpg}}
+\hfill \hspace{-2mm}
+\subfloat[Set 2 with high concept separability, detected-ID \label{fig:high_in}] {\includegraphics[width=0.45\columnwidth]{figures/ours_class17_AwA2_top10_detected_Energy.jpg}}\hfill\\
+% \vspace{-1mm}
+\subfloat[Set 1 with low concept separability, detected-OOD \label{fig:low_out}]{\includegraphics[width=0.45\columnwidth]{figures/yeh_class17_SUN_top10_detected_Energy.jpg}}\hfill
+\subfloat[Set 2 with high concept separability, detected-OOD \label{fig:high_out}] {\includegraphics[width=0.45\columnwidth]{figures/ours_class17_SUN_top10_detected_Energy.jpg}}
+\caption{
+\small \textbf{Our concept separability metric and visual distinction in the concept score patterns.} For the class "Giraffe", we compare the concept score patterns using two different sets of concepts. \textbf{Left:} Averaged concept scores using concept set 1 (top-10 important concepts out of the concepts learned with $\,\lambda_\textrm{mse} = \lambda_\textrm{norm} = \lambda_\textrm{sep} = 0$). 
+\textbf{Right:} Averaged concept scores using concept set 2 (top-10 important concepts out of the concepts learned with $\,\lambda_\textrm{mse} = 1, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 50$).
+Concept importance is measured using the Shapley value of Eqn. (\ref{equ: ConceptSHAP}).
+Concept separability is measured based on the presented 10 concepts from each set.
+% For visualization of what each concept represents, see Appendix.
+% C$i$ denotes $i$-th concept.
+}
+\label{fig:high_separa_interpretatbility}
+\vspace{-0.10in}
+% \vspace{-4mm}
+\end{figure}
+\fi
+
+
+% Lastly, we illustrate how the concepts learned by our algorithm can be used to provide explanations for an OOD detector.
+% By quantifying the contribution of each concept toward OOD detection results, we can identify the major concepts that an OOD detector relies on to make decisions. 
+% \begin{itemize}
+%     \item What set of the concepts is most prominent across the data detected as ID (or OOD) by $\mathcal{D}$?
+%     \item What set of the concepts contribute to distinguish the ID and OOD data detected by $\mathcal{D}$?
+%     \item How the change in concept score affects the $\mathcal{D}$'s detection result?
+%     % \jihye{check perturbation generation in ATOM <-- permutation in concept space?}
+% \end{itemize}
+%
+
+\iffalse
+\begin{figure}[tb]
+\vspace{-5mm}
+% \begin{center}
+%\includegraphics[width=0.45\textwidth]{figures/completeness.png}
+% \hspace*{+.5cm} 
+\includegraphics[scale=0.35]{figures/expl_dolphin.png}
+% \vspace{-9mm}
+\caption{
+\small \textbf{Our concept-based explanations for Energy detector given AwA (ID) and SUN (OOD) inputs.} Concepts are discovered by our method with $\lambda_\textrm{mse} = 1, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 10$.
+Visualized examples for each concept (with the corresponding $\textrm{SHAP}(\eta^{j}_{\bff, S}, 
+    \bfc_i)$ score inside the parenthesis) are the receptive fields from $\Dinte$ with highest correlation to the corresponding concept vector $\bfc_i$ where $\langle \bfphi^{p,q}(\bfx), \bfc_i \rangle > 0.85$.
+\vspace{-5mm}
+}
+\label{fig:expl_dolphin}
+% \end{center}
+\end{figure}
+\fi
+
+\begin{figure*}[t]
+% \vspace{-3mm}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/energy-collie.jpg}
+\caption{\small \textbf{Concept-based explanations for Energy OOD detector using concepts by \citet{yeh2020completeness} vs. ours ($\lambda_\textrm{mse} = 1, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 10$)}. Images are randomly selected from AwA test set (ID) and \texttt{Places} (OOD), and all predicted to class ``Collie''.
+ID profile shows the normal concept-score patterns for ID Collie images.
+}
+\label{fig:expl-energy-collie}
+\vspace{-3mm}
+\end{figure*}
+
+\subsection{Concept-based Explanations for OOD Detectors}
+\label{sec:expt_concept_based_explanations}
+\mypara{Contribution of each concept to detection.}
+The proposed concept learning algorithm learns concepts for both the classifier and OOD detector considering all the classes, and
+we address the following question: \textit{how much does each concept contribute to the detection results for inputs predicted to a particular class?}.
+% We address the following question: \textit{how much does each concept contribute to the OOD detection result?}
+Recent works have adopted the Shapley value from Coalitional Game theory literature \citep{shapley1953value,fujimoto2006axiomatic} for scoring the importance of a feature subset towards the predictions of a model \citep{chen2018shapley,lundberg2017shapley,sundararajan2020shapley}.
+Extending this idea, we modify the characteristic function of the Shapley value using our per-class detection completeness metric (Eqn. (\ref{equ: completeness-detection-perclass}) in Appendix \ref{sec:appendix-perclass-completeness}). 
+The modified Shapley value of a concept $\bfc_i \in \bfC$ with respect to the predicted class $j \in [L]$ is defined as
+% \vspace{-3mm}
+\begin{align}
+    \label{equ: ConceptSHAP}
+    &\textrm{SHAP}(\eta^{j}_{\bff, S}, \bfc_i)  ~:=~ \nonumber \\
+    &\sum_{\bfC' \subseteq \bfC \setminus \{\bfc_i\}} \!\!\!\frac{(m - |\bfC'| - 1)! \,|\bfC'|!}{m!} ~\big(\eta^{j}_{\bff, S}(\bfC' \cup \{\bfc_i\}) - \eta^{j}_{\bff, S}(\bfC')\big),
+\end{align}
+where $\bfC'$ is a subset of $\bfC$ excluding concept $\bfc_i$, and $\eta^{j}_{\bff, S}$ is the per-class detection completeness with respect to class $j$.
+% A high Shapley value represents the average marginal contribution of $\bfc_i$ across all possible coalitions with all classes considered.
+This Shapley value captures the average marginal contribution of concept $\bfc_i$ towards explaining the decisions of the OOD detector for inputs that are predicted into class $j$.
+% To do so, we simply modify our detection completeness definition (Def. (\ref{def:completeness_detec})) into a per-class variant by considering data predicted into a specific class $j$.
+% Also, $b_r = 0.5$ is the AUROC of a random detector.
+% Note that for numerator we use predicted label -- don't have labels for OOD data. 
+% Accordingly, we use SHAP($\eta^{j}_{\bff, S}(\bfC)$) to denote the Shapley score specific to class $j$.
+% where $\eta^{}_{\bff, S}(\bfC)$ is replaced in Eqn. (\ref{equ: completeness-detection-perclass}).
+
+
+Eventually, we interpret the behavior of the given OOD detector by plotting the concept score patterns with respect to the concepts ranked by the above Shapley importance score.
+Figure~\ref{fig:expl-energy-collie} illustrates the generated explanations given correctly-detected inputs (ID\,/\,OOD input detected as ID\,/\,OOD; first row of figure), and incorrectly-detected inputs (ID\,/\,OOD input detected as OOD\,/\,ID; second row of figure).
+Overall, we observe that the OOD detector predicts an input as ID when the concept scores show a similar pattern to the ID profile, or predicts an input as OOD when the concept score pattern is far from the ID profile.
+For instance, the fourth input is OOD image from \texttt{Places} dataset but detected as ID, since its score for C54 (furry dog skin) is as high as usual ID Collie images (which is true in the image). Thus, we conclude this to be an understandable mistake by the OOD detector.
+
+We also provide qualitative comparison between~\citet{yeh2020completeness} and our method in the resulting explanations for OOD detector.
+We observe that~\citet{yeh2020completeness} fails to generate visually-distinguishable explanations between detected-ID and detected-OOD inputs.
+The separation between the solid green bars and the orange bars in each figure becomes more visible in our explanations, which enables more intuitive interpretation for human users, and this reflects our design goal for concept separability.
+It is also noteworthy that our concepts that are most important to distinguish ID Collie from OOD Collie (\ie C54 and C30) are more specific, and finer-grained characteristics of Collie, while~\citet{yeh2020completeness} finds concepts that are vaguely similar to the features of dog, but rather generic (\ie C43 and C29).
+This is the reason we require more number of concepts to achieve detection completeness and concept separability, compared to solely considering the classification completeness~\footnote{In Figure~\ref{fig:expl-energy-collie}, after concept learning with $m = 100$ and duplicate removal, we find 44 non-redundant concepts for ~\citet{yeh2020completeness}, and 100 distinct concepts for ours.}.
+% \jihye{@others: may add one more closing/concluding statement?}
+
+
+\iffalse
+
+Based on this concept importance metric, we can interpret the misbehavior of the given OOD detector.
+Fig. \ref{fig:expl_dolphin} shows the averaged concept scores of top-10 important concepts for Energy detector between correctly detected-ID and -OOD inputs that are predicted to class ''Dolphin'' (namely, correct profiles).
+Given a random ID input that is mis-detected into OOD by the OOD detector, we observe that its concept scores rather follow the detected-OOD profiles (or vice-versa, for OOD input mis-detected into ID); specifically, unusually low score for C1 (blue, wavy surface of the sea) and high score for C14~\footnote{We could not visualize C14 as there is no receptive fields with correlation to $\bfc_{14}$ greater than $0.85$, which confirms the trade-off between concept separability and human understandability, as discussed in Appendix \ref{sec:appendix-concept-learning-ablation}}, and it would look reasonable for the OOD detector to think the ID input with such OOD-like characteristics to be OOD. 
+Such inspection of the OOD detector's mistakes could assist the practitioner in examining whether it was a reasonable mistake even for humans, or whether the OOD detector is simply unreliable. See Appendix \ref{sec:appendix-shapleys} for more examples of explanations.
+
+More examples can be found in Appendix.
+we present the top-ranked concepts along with the visualized examples that are nearest to the corresponding concept vector in Fig. \ref{fig:shap_buffalo}.
+For the baseline method \citep{yeh2020completeness} (denoted ``baseline'' in Fig. \ref{fig:shap_buffalo}), the learned concepts are solely intended for reconstructing the behavior of the classifier. 
+In this case, we observe from Fig. \ref{fig:shap_buffalo} that 
+% a common set of concepts (\ie concepts 32, 10, and 47) are selected for interpreting both the classifier and OOD detector.
+interpretation of both the classifier and OOD detector depends on a common set of concepts (\ie concepts 32, 10, and 47).
+On the other hand, the concepts learned by our method focus on reconstructing the behavior of both the OOD detector and the classifier. In this case, we observe from Fig. \ref{fig:shap_buffalo} that a distinct set of important concepts are selected for classification and OOD detection.
+We also observe that our method requires more concepts in order to address the decisions of both the classifier and OOD detector.
+For instance, the number of concepts obtained by our method and the baseline are 78 and 53 (respectively), out of a total 100 concepts~\footnote{After removing redundant concepts for which the inner-product between the corresponding concept vector and any of the remaining concept vectors is larger than $0.95$.}.
+More examples of concepts with high-ranking Shapley scores can be found in Appendix \ref{sec:appendix-explanation}.
+We further investigate the attribution of such top-ranked concepts via counterfactual analysis in Appendix \ref{sec:appendix-counterfactual}.
+
+\fi
+
+% \mypara{Separability and interpretatbility}
+% \begin{figure*}
+%   \centering
+%   \begin{tabular}{cc}
+%     \subfloat[\label{fig:mnist}][Sampling distribution is skewed consistently for a single class (i.e. class 0)]
+%     {
+%     \hspace{-5mm}
+%     \includegraphics[width=.49\linewidth]{mnist_class_0}} 
+%     ~&~
+%     \subfloat[\label{fig:asd}][Sampling distribution is skewed for the classes in turn (i.e. class 0, 1, 2, ...)]
+%     {\includegraphics[width=.49\linewidth]{mnist_class_all}}
+%   \end{tabular}
+%   \caption{Accuracy vs training time-step in MNIST}
+% \label{fig:mnist_results}
+% \end{figure*}

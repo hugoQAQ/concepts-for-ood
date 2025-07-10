@@ -1,0 +1,60 @@
+\begin{abstract}
+Out-of-distribution (OOD) detection plays a crucial role in ensuring the safe deployment of deep neural network (DNN) classifiers. %, by handling inputs that the classifier is not trained to handle. 
+% While a plethora of methods have emerged to improve detection performance, a critical gap remains in interpreting their decisions in a human-friendly way.
+While a myriad of methods have focused on improving the performance of OOD detectors, a critical gap remains in interpreting their decisions.
+We help bridge this gap by providing explanations for OOD detectors based on learned high-level concepts.
+% Motivated by the unexplored applicability of concept-based explanations to OOD detection tasks, 
+We first propose two new metrics for assessing the effectiveness of a particular set of concepts for explaining OOD detectors: 1) \textit{detection completeness} -- which quantifies the sufficiency of concepts for explaining an OOD detector's decisions, and 2) \textit{concept separability} -- which captures the distributional separation between in-distribution and OOD data in the concept space.
+Based on these metrics, we propose an unsupervised framework for learning a set of concepts that satisfy the desired properties of high detection completeness and concept separability, and demonstrate its effectiveness in providing concept-based explanations for diverse off-the-shelf OOD detectors.
+% We also show how to identify prominent concepts that contribute to the detection results via a modified Shapley value-based importance score.
+We also show how to identify prominent concepts contributing to the detection results, and provide further reasoning about their decisions.
+% and counterfactual analysis.
+% We demonstrate the frameworks's effectiveness in providing concept-based explanations for diverse OOD detection methods, and also show how to identify prominent concepts that contribute to the detection results via a modified Shapley value-based importance score.
+
+% v2
+% Using real-world images as a testing domain, we evaluate our proposed algorithm on a diverse set of popular OOD detection methods, and demonstrate the effectiveness of our framework. We use a modified Shapley value-based importance score and counterfactual analysis to gauge efficacy. 
+% v1
+% Using real-world images as a testing domain, we evaluate our proposed algorithm on a diverse set of popular OOD detection methods, and demonstrate which concepts prominently contribute to the detection results via a modified Shapley value-based importance score and counterfactual analysis.
+
+\end{abstract}
+
+
+% Out-of-distribution detection (OOD) is crucial for ensuring safe deployment of machine learning models by determining if the inputs fit the type of data the model is designed to handle. However, it is difficult to explain the behavior of such OOD models in a human-understandable way. While there exists work on concept-based explanations that explain an image classifier's behavior by measuring an input's response to a smaller set of semantically understandable concepts, to the best of our knowledge the application of concept-based explanations to OOD detection has not been explored. As such, we aim to provide the first concept-based explanations for OOD detectors. Our framework is designed to generate explanations with these two properties: 1) the concepts should have high \textit{detection completeness}, meaning that the set of chosen concepts are sufficient to cover the behavior of the OOD detector and 2) the concepts should have high \textit{separability}, meaning that these concepts can distinguish in-distribution and out-of-distribution samples. We demonstrate that our concepts can help ML practitioners debug and understand their OOD detectors to further improve their robustness.
+
+\iffalse
+
+Old version:
+Out-of-distribution (OOD) detection is important to avoid use of classifiers in situations they are not designed to handle and to discover gaps in their training. But, it is difficult to provide a human-intuitive explanation of behavior of an OOD detector in terms of human-understandable high-level concepts. 
+%What are the key concepts that make an input to be detected as in-distribution or out-of-distribution (OOD) by a certain type of OOD detector?  We seek to interpret the behavior of OOD detectors in terms of human-understandable, high-level concepts.
+Despite the effectiveness of concept-based explanations for classification task with in-distribution inputs, their appropriateness for OOD detection task is not explored yet.
+In this paper, we introduce two notions to assess how appropriately a particular set of concepts can be used to explain an OOD detector's decisions: 1) \textit{detection completeness}, which quantifies how sufficiently the concepts describe outputs from the OOD detector, and 2) \textit{separability}, which captures how distinguishably the concepts are activated between in-distribution and OOD.
+Next, we propose a general framework to learn a set of concepts that are encouraged to have those two properties.
+Among the discovered concepts, we specify which concepts prominently contribute to detection results, and by properly intervening on such concepts, we can improve the performance of the detector even further.
+Taken together, \jihye{implication of our work -- how it can help ml practitioner}
+
+
+
+JR version:
+
+Out-of-distribution (OOD) detection is an important technique for enabling a classifier to safely handle inputs that it is not designed to handle (e.g., novel classes), and for discovering gaps in the classifier's training.
+% Out-of-distribution detection (OOD) is an important technique for ensuring the safe deployment of machine learning models by determining if the inputs fit the type of distribution the model is designed to handle.
+However, the decisions of an OOD detector are typically not understandable in terms of high-level concepts to a human.
+While concept-based explanations have been recently shown to be effective at providing human-interpretable explanations for a classifier's predictions (behavior?), their applicability and effectiveness for the OOD detection task remains fairly unexplored.
+In this paper, we address this problem by first proposing two metrics for assessing the effectiveness of a set of learned concepts at explaining an OOD detector's decisions: 1) \textit{Detection completeness}, which quantifies the sufficiency of a set of concepts for explaining an OOD detector's decisions, and 2) \textit{Separability}, which captures the distributional separation between in-distribution (normal) and OOD data in the projected concept space.
+We then propose a general framework for learning a set of concepts that satisfy the desired properties of detection completeness and separability. 
+Our algorithm can be applied to many well-known OOD detection methods that are paired with a deep neural network (DNN) classifier.
+\jayaram{The above line may be removed to make it more concise.}
+Among the set of learned concepts, we evaluate which ones prominently contribute to the detector's decisions via a modified Shapley value-based importance score.
+
+
+
+
+Motivated by the unexplored applicability of concept-based explanations to OOD detection tasks, we first introduce two metrics for assessing the effectiveness of a particular set of concepts:
+
+Motivated by the effectiveness of concept-based explanations for a DNN classifier, we 
+
+e.g., inputs from a different domain or modality
+enabling a classifier operating in an uncertain environment to handle inputs
+ 
+
+\fi

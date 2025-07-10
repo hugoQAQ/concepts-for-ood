@@ -1,0 +1,24 @@
+\section{Discussion and Societal Impact}
+\label{sec:app_discussion}
+\mypara{Auxiliary OOD Dataset.} 
+%Our approach also remains a limitation in that an auxiliary dataset of an OOD distribution is required.
+A limitation of our approach is its requirement of an auxiliary OOD dataset for concept learning, which could be hard to access in certain applications.
+% A weakness of our approach is that it requires an auxiliary OOD dataset for concept learning. 
+% Unfortunately, access to such data could be a luxury in certain applications.
+To overcome that, a research direction would be to design generative models that simulate domain shifts or anomalous behavior and could create the auxiliary OOD dataset synthetically, allowing us additional control on the extent of distributional changes the resulting concepts could deal with (see Appendix~\ref{app:auxiliary-ood} for further discussion). 
+
+% We believe this work takes a step toward building trust in the deployment of OOD detectors, which will help the practical integration of such systems towards making societal decisions.
+
+\mypara{Human Subject Study.} 
+% One would suggest performing a user study to get a more extensive understanding of the effectiveness of our method in the hands of ML practitioners.
+Performing a human-subject (or user) study would be the ultimate way to evaluate the effectiveness of explanations, but remains largely unexplored even for in-distribution classification tasks.  
+We emphasize that designing such a usability test with OOD detectors would be even more challenging due to the characteristics of the OOD detection task, compared to in-indistribution classification tasks.
+For in-distribution classifiers, users could potentially generate hypotheses about what high-level concepts should attribute to the class prediction, and compare their hypotheses to the provided explanations to determine the classifier's reliability.
+On the other hand, assessing the reliability of OOD detection involves checking whether a given input belongs to any of the natural distributions of concepts; this is essentially limited to whether users' mental models on such global distributions can be accurately probed via a couple of presented local instances.
+We believe that designing a thorough probing method for human interpretability on OOD detection would be an interesting yet challenging research quest by itself~\cite{kim2022hive} and our paper does not address that.
+
+\mypara{Societal Impact.}
+\label{sec:broader_impact}
+Our work helps address the detection results of OOD detectors, giving practitioners the ability to explain the model's decision to invested parties. 
+Our explanations can also be used to keep a data point as an understood mistake by the model rather than throwing it away without further analysis, which could help guide how to improve the OOD detector with respect to the concepts. 
+However, this would also mean that more trust is put back into the human practitioner to not abuse the explanations or misrepresent them. 

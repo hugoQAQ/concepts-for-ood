@@ -1,0 +1,294 @@
+\newpage
+\appendix
+\onecolumn
+\begin{center}
+	\textbf{\LARGE Appendix }
+\end{center}
+
+% \begin{center}
+% 	\textbf{\large Concept-based Explanations for Out-of-Distribution Detectors}
+% \end{center}
+In Section~\ref{sec:app_discussion}, we discuss additional aspects of our method such as the choice of auxiliary OOD dataset, human subject study, and societal impact.
+In Section \ref{sec:appendix-A}, we discuss the connection of the proposed concept separability to Bhattacharya Distance, and the per-class variations of detection completeness and concept separability, followed by the overall algorithm for concept learning.
+In Section \ref{sec:appendix-implementation-details}, we provide the detailed setup for the experiments and additional thorough analysis of our concept learning objective.
+In Section \ref{app:auxiliary-ood}, we discuss whether our concept learning objective remains effective even when a synthesized auxiliary OOD dataset similar to target ID data is used.
+In Section \ref{sec:appendix-shapleys}, we illustrate additional examples of our concept-based explanations.
+
+
+% short analysis of the ConceptSHAP in the appendix like Yeh et al do
+% Connection to dimensionality reduction, Fisher's score?
+\input{contents/app_discussion}
+\input{contents/app_concept_learning}
+
+\section{Implementation Details}
+\label{sec:appendix-implementation-details}
+% In this section, we provide more details about our experiment setting.
+We ran all our experiments with Tensorflow, Keras and NVDIA GeForce RTX 2080Ti GPUs. We used test-set bootstrapping with 200 runs to obtain the confidence interval for each hyperparameter setting of concept learning.
+
+\subsection{Experimental Setting.}
+\mypara{OOD Datasets.}
+For the auxiliary OOD dataset for concept learning ($\Douttr$), we use the unlabeled images from MSCOCO dataset (120K images in total) \cite{lin2014mscoco}. We carefully curate the dataset to make sure that no images contain overlapping animal objects with our ID dataset (\ie 50 animal classes of Animals-with-Attributes \cite{xian2018awa}), then randomly sample 30K images.
+For OOD datasets for evaluation ($\Doutte$), we use the high-resolution image datasets processed by Huang and Li~\cite{Huang_MOS}.
+
+\mypara{Hyperparameters for Concept Learning.}
+Throughout the experiments, we fix the number of concepts to $m = 100$ (unless specifically mentioned otherwise), and following the implementation of \cite{yeh2020completeness}, we set $\lambda_{\textrm{expl}} = 10$ and $\bfg$ to be a two-layer fully-connected neural network with $500$ neurons in the hidden layer.
+We learn concepts based on feature representations from the layer right before the global max-pooling layer of the Inception-V3 model.
+% We set the range of $\lambda_{\textrm{norm}}, \lambda_{\textrm{mse}}$ and $\lambda_{\textrm{sep}}$ (in Eqn. (\ref{equ: concept learning})) based on the scale of corresponding regularization terms (\ie $J_{\textrm{norm}}(\bfC, \bfg),  J_{\textrm{mse}}(\bfC, \bfg)$ and $ J_{\textrm{sep}}(\bfC)$, respectively), for a specific choice of the OOD detector.
+% For ablation study to illustrate the effect of each parameter, see Appendix \ref{sec:appendix-concept-learning-ablation}.
+After concept learning with $m$ concepts, we remove any duplicate (redundant) concept vectors by removing those with a dot product larger than $0.95$ with the remaining concept vectors~\cite{yeh2020completeness}.
+
+
+\subsection{Additional Results on the Effectiveness of Our Concept Learning}
+\label{sec:app_addi_results}
+
+\mypara{Ablation Study for Concept Learning.}
+\label{sec:appendix-concept-learning-ablation}
+We perform an ablation study that isolates the effect of each regularization term in our concept learning objective (Eqn. \ref{equ: concept learning}) towards our evaluation metrics: classification completeness, detection completeness, and relative concept separability. 
+We also observe the coherency among the learned concepts by varying $\lambda_\textrm{mse}$ and $\lambda_\textrm{sep}$.
+Coherency of concepts was introduced by Ghorbani \etal~\cite{ghorbani2019ace} to ensure that the generated concept-based explanations are understandable to humans. 
+It captures the idea that the examples for a concept should be similar to each other, while being different from the examples corresponding to other concepts.
+For the specific case of the image domain, the receptive fields most correlated to a concept $i$ (\eg "stripe pattern") should look different from the receptive fields for a different concept $j$ (\eg "wavy surface of sea").
+\citet{yeh2020completeness} proposed to quantify the coherency of concepts as 
+\begin{equation}
+\label{eq:coherency}
+    \frac{1}{m\,K} \mysum_{i=1}^m \mysum_{\bfx^\prime \in T_{\bfc_i}} \langle \bfphi(\bfx^\prime), \bfc_i \rangle,
+\end{equation}
+where $T_{\bfc_i}$ is the set of $K$-nearest neighbor patches of the concept vector $\bfc_i$ from the ID training set $\Dintr$.
+
+\begin{figure*}[hbt]
+  \centering
+  \begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\textwidth]{figures/ablation_mse.png}
+    \caption{Ablation study varying $\lambda_\textrm{mse}$; we set $\lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 0$}
+    \label{fig:ablation_mse}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\textwidth]{figures/ablation_sep.png}
+    \caption{Ablation study varying $\lambda_\textrm{sep}$; we set $\lambda_\textrm{mse} = 0, \lambda_\textrm{norm} = 0$.}
+    \label{fig:ablation_sep}
+  \end{subfigure}
+  \caption{\textbf{Ablation study with respect to $J_\textrm{mse}(\bfC, \bfg)$ and $J_\textrm{sep}(\bfC)$.} We fix $m = 100, \lambda_\textrm{expl} = 10$, and the OOD detector used for concept learing and evaluation is Energy \cite{liu2020energy}}
+\label{fig:ablation}
+\end{figure*}
+
+We use this metric to quantify how understandable our concepts are for different hyperparameter choices. Figure~\ref{fig:ablation} shows that aligned with our intuition, large $\lambda_\textrm{mse}$ helps to improve the detection completeness. 
+Having non-zero $\lambda_\textrm{mse}$ is also helpful to improve the classification completeness even further, and surprisingly concept separability as well, without sacrificing the coherency of concepts.
+On the other hand, on the right side of Figure~\ref{fig:ablation}, we observe that large relative concept separability with large $\lambda_\textrm{sep}$ comes at the expense of lower detection completeness and coherency. 
+Recall that when visualizing what each concept represents for human's convenience, we apply threshold 0.8 to only presents (see Figure \ref{fig:app-shap}). 
+Low coherency with respect to Eqn. \ref{eq:coherency} (\ie 0.768 with $\lambda_\textrm{sep} = 75)$ means that there is much less number of examples that can pass the threshold, meaning that users can hardly understand what the concepts at hand entail.
+This observation suggests that one needs to balance between concept coherency and concept separability depending on which property would be more useful for a specific application of concepts.
+
+
+\mypara{Effectiveness of the Concept Learning.}
+In Table~\ref{tab:concept-learning-results}, we present the complete results of concept learning for various combinations of the regularization coefficients across various real-world, large-scale OOD data: \texttt{Places}, \texttt{SUN} and \texttt{Textures}.
+
+\begin{table*}[htb]
+    \centering
+    % \begin{adjustbox}{width=1\columnwidth,center}
+    \begin{adjustbox}{width=1\textwidth,center}
+		\begin{tabular}{l|l|l|c|c|c|c|c|c}
+			\toprule
+			\multirow{3}{0.001\linewidth}{OOD detector} & \multirow{3}{0.10\linewidth}{Hyper-\\parameters} &
+			\multirow{3}{0.05\linewidth}{ $\eta^{}_{\bff}(\bfC) \uparrow$} & \multicolumn{6}{c}{Test OOD dataset} \\ \cline{4-9}
+    		& & & \multicolumn{2}{c|}{\texttt{Places}} & \multicolumn{2}{c|}{\texttt{SUN}} & \multicolumn{2}{c}{\texttt{Textures}}\\ \cline{4-9}
+    		& & & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ & $\eta^{}_{\bff, S}(\bfC) \uparrow$ & $J_{\textrm{sep}}(\bfC, \bfC') \uparrow$ \\ \hline \hline
+			%
+            \multirow{4}{0.10\linewidth}{MSP} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.774 $\pm$ 0.0010 & 0.694 $\pm$ 0.0153 & 0.782 $\pm$ 0.0010 & 1.088 $\pm$ 0.0175 & 0.593 $\pm$ 0.0013 & 0.765 $\pm$ 0.0157\\
+			& $(10, 0.1, 0)$ & \textbf{0.994} $\pm$ 0.0004 & \underline{0.947} $\pm$ 0.0004 & 1.892 $\pm$ 0.0393 & \underline{0.946} $\pm$ 0.0004 & 3.074 $\pm$ 0.0531 & \underline{0.920} $\pm$ 0.0005 & \underline{3.577} $\pm$ 0.1292\\
+			& $(0, 0, 50)$ & 0.980 $\pm$ 0.0005 & 0.814 $\pm$ 0.0008 & \underline{2.533} $\pm$ 0.0714 & 0.816 $\pm$ 0.0009 & \underline{4.295} $\pm$ 0.1048 & 0.773 $\pm$ 0.0010 & 3.147 $\pm$ 0.2076\\
+			& $(10, 0.1, 50)$ & \underline{0.984} $\pm$ 0.0004 & \textbf{0.960} $\pm$ 0.0004 & \textbf{2.756} $\pm$ 0.0854 & \textbf{0.961} $\pm$ 0.0005 & \textbf{4.442} $\pm$ 0.0830 & \textbf{0.937} $\pm$ 0.0004 & \textbf{3.587} $\pm$ 0.2145\\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{ODIN} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.742 $\pm$ 0.0011 & 0.444 $\pm$ 0.0119 & 0.745 $\pm$ 0.0010 & 0.710 $\pm$ 0.0156 & 0.618 $\pm$ 0.0013 & 0.501 $\pm$ 0.0121 \\
+			& $(10^8, 0.1, 0)$ & \textbf{0.994} $\pm$ 0.0004 & \underline{0.951} $\pm$ 0.0004 & 1.166 $\pm$ 0.0303 & \underline{0.958} $\pm$ 0.0004 & 2.135 $\pm$ 0.0450 & \underline{0.934} $\pm$ 0.0004 & 2.793 $\pm$ 0.0865\\
+			& $(0, 0, 50)$ & 0.987 $\pm$ 0.0004 & 0.899 $\pm$ 0.0007 & \underline{1.785} $\pm$ 0.0669 & 0.911 $\pm$ 0.0006 & \underline{3.814} $\pm$ 0.0768 & 0.793 $\pm$ 0.0008 & \underline{3.046} $\pm$ 0.2845\\
+			& $(10^8, 0.1, 50)$ & \underline{0.991} $\pm$ 0,0005 & \textbf{0.973} $\pm$ 0.0009 & \textbf{1.813} $\pm$ 0.0268 & \textbf{0.969} $\pm$ 0.0010 & \textbf{4.000} $\pm$ 0.0094 & \textbf{0.945} $\pm$ 0.0006 & \textbf{3.662} $\pm$ 0.1005\\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{General-ODIN} 
+			& $(0, 0, 0)$ & 0.988 $\pm$ 0.0004 & 0.769 $\pm$ 0.0004 & 0.506 $\pm$ 0.0165 & 0.719 $\pm$ 0.0014 & 0.816 $\pm$ 0.0192 & 0.605 $\pm$ 0.0013 & 0.558 $\pm$ 0.1683\\
+			& $(10^6, 0.1, 0)$ & \textbf{0.995} $\pm$ 0.0004 & \underline{0.951} $\pm$ 0.0006 & 1.461 $\pm$ 0.0321 & \underline{0.960} $\pm$ 0.0005 & 3.007 $\pm$ 0.0316 & \underline{0.940} $\pm$ 0.0008 & 2.619 $\pm$ 0.1077\\
+			& $(0, 0, 50)$ & 0.981 $\pm$ 0.0004 & 0.859 $\pm$ 0.0007 & \underline{1.814} $\pm$ 0.0685 & 0.803 $\pm$ 0.0006 & \underline{4.204} $\pm$ 0.0159 & 0.826 $\pm$ 0.0008 & \textbf{4.014} $\pm$ 0.2246\\
+			& $(10^6, 0.1, 50)$ & \underline{0.990} $\pm$ 0.0005 & \textbf{0.971} $\pm$ 0.0010 & \textbf{1.835} $\pm$ 0.0669 & \textbf{0.963}$\pm$ 0.0004 & \textbf{4.287} $\pm$ 0.0284 & \textbf{0.951} $\pm$ 0.0005 & \underline{3.695} $\pm$ 0.1921 \\ \hline
+			%
+            \multirow{4}{0.10\linewidth}{Energy} 
+			& $(0, 0, 0)$ & 0.977 $\pm$ 0.0006 & 0.671 $\pm$ 0.0012 & 0.453 $\pm$ 0.0121 & 0.682 $\pm$ 0.0012 & 0.675 $\pm$ 0.0148 & 0.557 $\pm$ 0.0014 & 0.521 $\pm$ 0.0131\\
+			& $(1. 0.1, 0)$ & \textbf{0.993} $\pm$ 0.0005 & \textbf{0.965} $\pm$ 0.0004 & 1.266 $\pm$ 0.0319 & \textbf{0.963} $\pm$ 0.0004 & 2.125 $\pm$ 0.0413 & \textbf{0.960} $\pm$ 0.0003 & 2.648 $\pm$ 0.0596\\
+			& $(0, 0, 50)$ & \underline{0.987} $\pm$ 0.0005 & 0.779 $\pm$ 0.0010 & \textbf{1.920} $\pm$ 0.0725 & 0.793 $\pm$ 0.0009 & \textbf{3.659} $\pm$ 0.0659 & 0.767 $\pm$ 0.0010 & \textbf{4.397} $\pm$ 0.2165 \\
+			& $(1, 0.1, 50)$ & 0.980 $\pm$ 0.0005 & \underline{0.943} $\pm$ 0.0005 & \underline{1.839} $\pm$ 0.0662 & \underline{0.941} $\pm$ 0.0005 & \underline{3.421} $\pm$ 0.0619 & \underline{0.936} $\pm$ 0.0005 & \underline{3.917} $\pm$ 0.1691 \\ \hline
+			%
+			\multirow{4}{0.10\linewidth}{Mahala-\\nobis} 
+			& $(0, 0, 0)$ & 0.990 $\pm$ 0.0007 & 0.715 $\pm$ 0.0011 & 0.571 $\pm$ 0.0110 & 0.736 $\pm$ 0.0011 & 0.822 $\pm$ 0.0165 & 0.591 $\pm$ 0.0011 & 0.564 $\pm$ 0.0203 \\
+			& $(0.1, 0.1, 0)$ & \textbf{0.994} $\pm$ 0.0004 & \underline{0.950} $\pm$ 0.0009 & 1.532 $\pm$ 0.0351 & \underline{0.960} $\pm$ 0.0010 & 2.276 $\pm$ 0.0466 & \underline{0.938} $\pm$ 0.0004 & 2.915 $\pm$ 0.1132\\
+			& $(0, 0, 50)$ & 0.985 $\pm$ 0.0004 & 0.880 $\pm$ 0.0005 & \underline{2.550} $\pm$ 0.0681 & 0.883 $\pm$ 0.0006 & \underline{4.091} $\pm$ 0.1013 & 0.774 $\pm$ 0.0007 & \underline{4.274} $\pm$ 0.2305\\
+			& $(0.1, 0.1, 50)$ & \underline{0.992} $\pm$ 0.0006 & \textbf{0.961} $\pm$ 0.0005 & \textbf{2.616} $\pm$ 0.0857 & \textbf{0.966} $\pm$ 0.0005 & \textbf{4.325} $\pm$ 0.0055 & \textbf{0.949} $\pm$ 0.0003 & \textbf{4.308} $\pm$ 0.2011 \\ \bottomrule
+		\end{tabular}
+	\end{adjustbox}
+	\caption[]{
+	\small \textbf{Results of concept learning with different parameter settings across various OOD detectors and test OOD datasets.} 
+% 	$\bfC'$ denotes a set of concepts discovered by baseline \citep{yeh2020completeness} (\ie $\lambda_\textrm{mse} = 0, \lambda_\textrm{norm} = 0, \lambda_\textrm{sep} = 0$).
+	Hyperparameters are in the order of $(\lambda_\textrm{mse}, \lambda_\textrm{norm}, \lambda_\textrm{sep})$.
+% 	Larger values are better for all the metrics. 
+	Across the rows (for a given OOD detector and OOD dataset), the best value is \textbf{boldfaced}, and second best value is \underline{underscored}.
+	The $95\%$ confidence intervals are estimated by bootstrapping the test set over $200$ trials.}
+% 	\textbf{Bold} numbers indicate the best results (across the rows) for a given OOD detection method and dataset. 
+	%Note that by definition of $J_{\textrm{sep}}(\bfC, \bfC')$ (Eqn. \ref{eq:relative-separability}), the relative concept separability of the baseline~\citep{yeh2020completeness} is always $0$, \ie $J_{\textrm{sep}}(\bfC', \bfC') = 0$.
+ \label{tab:concept-learning-results}
+% \vspace{-.2in}
+\end{table*}
+
+
+
+\mypara{Accurate Reconstruction of OOD Scores}
+In addition to Fig.~\ref{fig:score-distribution-msp}, where we compared the reconstruction accuracy of OOD scores using concepts by \citet{yeh2020completeness} and ours, Fig.~\ref{fig:score-distribution-energy} confirms that the same observation also applies to the Energy detector.
+
+\begin{figure*}
+  \centering
+  \begin{subfigure}{0.32\linewidth}
+    \includegraphics[width=\textwidth]{figures/distr_energy_target.png}
+    \caption{\small Empirical distribution of $S(\bfx, \bff)$ from the target detector.}
+    \label{fig:short-a1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\linewidth}
+    \includegraphics[width=\textwidth]{figures/distr_energy_yeh.png}
+    \caption{\small Distribution of $\Scon(\bfx, \bff)$ using concepts learned by \citet{yeh2020completeness}.}
+    \label{fig:short-b1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\linewidth}
+    \includegraphics[width=\textwidth]{figures/distr_energy_ours.png}
+    \caption{\small Distribution of $\Scon(\bfx, \bff)$ using concepts learned by our method.}
+    \label{fig:short-c1}
+  \end{subfigure}
+  \caption{
+  \small (a) Energy detector score $S(\bfx, \bff)$ in the canonical world vs. (b, c) reconstructed $\Scon(\bfx, \bff)$ in the concept world, using different set of concepts.
+  Concepts by~\citet{yeh2020completeness} have $\eta^{}_{\bff} = 0.977, ~\eta^{}_{\bff, S}(\bfC) = 0.682$, while concepts by ours $(\lambda_\textrm{mse} = 1, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 50)$ have $\eta^{}_{\bff} = 0.984, ~\eta^{}_{\bff, S}(\bfC) = 0.941$.
+    Comparison is made between AwA test set (ID, blue) vs. \texttt{SUN} (OOD, red).
+    }
+\label{fig:score-distribution-energy}
+\end{figure*}
+
+\iffalse
+\mypara{Transferability of concepts across OOD detectors.}
+\label{sec:appendix-concept-learning-transfer}
+Our work essentially suggests using a different set of concepts for a specific target OOD detector, as $J_{\textrm{mse}}(\bfC, \bfg)$ and $J_{\textrm{sep}}(\bfC)$ in Eqn. (\ref{equ: concept learning}) depend on a choice of OOD detector. 
+In practice, however, one might not have enough computational capacity to prepare multiple sets of concepts for all type of OOD detectors at hand.
+Here, we inspect whether the concepts targeted for a certain type of OOD detector are also good to be used for other OOD detectors.
+% For instance, 
+% $J_\textrm{sep}(\bfC, \bfC') = 0.494$
+% But interestingly, relative concept separability tends to be transferred well.
+% For full transferability results of concepts targeted for different type of OOD detectors, and tested with different OOD data, see Appendix \ref{sec:appendix-concept-learning-transfer}.
+
+We explore the transferability of concepts targeted to MSP \cite{hendrycks2016msp} detector in Table \ref{tab:transferability-msp}, and Energy \cite{liu2020energy} in Table \ref{tab:transferability-energy}.
+Not surprisingly, we observe that concepts targeted for Energy yields the best detection completeness score when tested with the same type of OOD detector, but still make meaningful improvement with other detectors as well.
+When it comes to relative concept separability, it is transferred even better across different OOD detectors. 
+For instance, the concepts lead to $J_\textrm{sep}(\bfC, \bfC') = 0.862$ with \texttt{Textures}, the best relative concept separability is achieved with ODIN detector (\ie $J_\textrm{sep}(\bfC, \bfC') = 0.862$) and which is even higher than the best results we could obtain using the set of concepts targeted for ODIN (\ie $J_\textrm{sep}(\bfC, \bfC') = 0.414$ with $\lambda_\textrm{mse} = 0, \lambda_\textrm{norm} = 0, \lambda_\textrm{sep} = 50$ in Table \ref{tab:concept-learning-results}).
+\begin{table*}[htb]
+    % \centering
+    % \begin{adjustbox}{}
+\begin{subtable}{.47\linewidth}
+\begin{adjustbox}{width=\textwidth,center}
+\begin{tabular}{l|l|c|c|c|c}
+			\toprule
+			\multirow{2}{0.35\linewidth}{OOD dataset} & \multirow{2}{0.06\linewidth}{Metrics} & \multicolumn{4}{c}{$\calD$} \\ \cline{3-6}
+    		& & MSP & ODIN & Energy & Mahal\\  \hline \hline
+    % 		& & & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) \\ \hline \hline
+			\multirow{2}{0.08\linewidth}{\texttt{Places}} & $\eta^{}_{\bff, S}(\bfC)$ & 0.959 & 0.952 & 0.938 & 0.947\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.327 & 0.288 & 0.361 & 0.338 \\\hline 
+            \multirow{2}{0.08\linewidth}{\texttt{SUN}} & $\eta^{}_{\bff, S}(\bfC)$ & 0.961 & 0.954 & 0.945 & 0.953 \\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.266 & 0.294 & 0.390 & 0.351\\\hline 
+			\multirow{2}{0.08\linewidth}{\texttt{Textures}} & $\eta^{}_{\bff, S}(\bfC)$ & 0.938 & 0.946 & 0.932 & 0.930\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.344 & 0.279 & 0.313 & 0.335\\\hline 
+			\multirow{2}{0.08\linewidth}{\texttt{iNaturalist}} & $\eta^{}_{\bff, S}(\bfC)$ & 0.946 & 0.946 & 0.933 & 0.930\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.286 & 0.181 & 0.229 & 0.197\\
+ \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+        \caption[]{Concepts targeted for MSP with $\lambda_\textrm{mse} = 10, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 50$}
+    \label{tab:transferability-msp}
+        \end{subtable}
+ % \hfill
+     % \small
+    % \centering
+    \hspace{\fill}
+\begin{subtable}{.47\linewidth}
+\begin{adjustbox}{width=\textwidth,center}
+
+		\begin{tabular}{l|l|c|c|c|c}
+			\toprule
+			\multirow{2}{0.35\linewidth}{OOD data} & \multirow{2}{0.06\linewidth}{Metrics} & \multicolumn{4}{c}{OOD detector} \\ \cline{3-6}
+    		& & MSP & ODIN & Energy & Mahal\\  \hline \hline
+    % 		& & & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) & $\mu_{f, \calD} (\bfC)$ & S(\bfC) \\ \hline \hline
+			\multirow{2}{0.08\linewidth}{\texttt{Places}} & $\eta^{}_{\bff, S}(\bfC)$ &0.956& 0.954 &0.971 & 0.954\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.417 & 0.415 &0.365& 0.410 \\\hline 
+            \multirow{2}{0.08\linewidth}{\texttt{SUN}} & $\eta^{}_{\bff, S}(\bfC)$ &0.949& 0.948 &0.970& 0.950\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.355 &0.286 &0.400& 0.353 \\\hline 
+			\multirow{2}{0.08\linewidth}{\texttt{Textures}} & $\eta^{}_{\bff, S}(\bfC)$ &0.931& 0.943 &0.964& 0.947\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.567 & 0.862&0.494&0.701 \\\hline 
+			\multirow{2}{0.08\linewidth}{\texttt{iNaturalist}} & $\eta^{}_{\bff, S}(\bfC)$ &0.943& 0.939 &0.973& 0.940\\ 
+			& $J_{\textrm{sep}}(\bfC, \bfC')$ & 0.283 &0.448 &0.280& 0.326\\
+ \bottomrule
+		\end{tabular}
+   
+	\end{adjustbox}
+        
+        \caption[]{Concepts targeted for Energy with $\lambda_\textrm{mse} = 1, \lambda_\textrm{norm} = 0.1, \lambda_\textrm{sep} = 50$}
+	\label{tab:transferability-energy}
+ \end{subtable}
+\caption{Transferability of concepts across different OOD detectors.}
+\end{table*}
+
+% \begin{table}[htb]
+
+% \end{table}
+
+\fi 
+
+
+\subsection{Accurate Reconstruction of Classifier Outputs}
+\label{app:hellinger}
+We have performed additional experiments to understand if the proposed method can provide improvements in the classification setting. 
+Let $\mathbf{C}_1$ denote the concept matrix learned by the method of \citet{yeh2020completeness}. 
+Let $\mathbf{C}_2$ denote the concept matrix learned by our method with $\lambda_{mse} = \lambda_{sep} = 0$ and $\lambda_{norm} = 0.1$ (set based on the scale of the regularization term $J_{norm}$). The idea is that we exclude the terms in the concept-learning objective (Eqn.~\ref{equ: concept learning}) that depend on the OOD detector, but include the $\ell_2$ norm based reconstruction error of the layer representation. 
+To evaluate the utility of these two sets of concepts for classification, we calculated the per-sample Hellinger distance between the predicted class probabilities of the original classifier and the concept-world classifier (based on either $\mathbf{C}_1$ or $\mathbf{C}_2$). 
+Fig.~\ref{fig:hellinger} compares the empirical distribution of the Hellinger distance for both sets of concepts $\mathbf{C}_1$ and $\mathbf{C}_2$. We observe that the distribution is more skewed towards zero with a higher density near zero and a shorter (right) tail in the case of $\mathbf{C}_2$ (red curve) compared to $\mathbf{C}_1$ (blue curve). This suggests that the class predictions are more accurately reconstructed by the concepts learned using our method with only the reconstruction error-based regularization. This can in-turn benefit the concept-based explanations for the classifier.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/classification_hellinger.jpg}
+\caption{Examples for correct detection}
+\label{fig:hellinger}
+\end{figure*}
+
+
+\iffalse
+
+\subsection{Separability in explanations}
+\label{sec:appendix-separability}
+% Let $X_{in}$ be the set of data detected as ID by $\mathcal{D}$. That is, $\mathcal{D(\bfx)} \geq \tau, ~ \forall \bfx \in X_{in}$. And $X_{out}$ be the set of data detected as OOD by $\mathcal{D}$: $\mathcal{D(\bfx)} < \tau, ~\forall \bfx \in X_{out}$.
+
+% \begin{equation}
+%     CAV_{in} = \frac{\sum_{\bfx_i \in X_{in}} v_\bfC(\bfx_i)}{|X_{in}|}
+% \end{equation}
+% \begin{equation}
+%     \label{equ: CAV}
+%     CAV_{out} = \frac{\sum_{\bfx_i \in X_{out}} v_\bfC(\bfx_i)}{|X_{out}|}
+% \end{equation}
+
+% AwA vs SUN
+\begin{figure}[h]
+\centering
+\subfloat[ID, baseline \label{fig:yeh_low_separa_in}]{\includegraphics[width=0.5\textwidth]{yeh_class15_AwA2_top10_detected_Energy.jpg}}\hfill
+\subfloat[ID, ours \label{fig:ours_low_separa_in}] {\includegraphics[width=0.5\textwidth]{figures/ours_class15_AwA2_top10_detected_Energy.jpg}}\hfill\\
+\subfloat[OOD, baseline\label{fig:yeh_low_separa_out}]{\includegraphics[width=0.5\textwidth]{figures/yeh_class15_SUN_top10_detected_Energy.jpg}}\hfill
+\subfloat[OOD, ours \label{fig:ours_low_separa_out}] {\includegraphics[width=0.5\textwidth]{figures/ours_class15_SUN_top10_detected_Energy.jpg}}
+\caption{Easy class ("German Shepherd") with lowest separability. Top-10 concepts with highest conceptSHAP score}
+\label{fig:high_separa}
+\end{figure}
+\fi
+
+\input{contents/app_near_ood}
+\input{contents/app_explanation}
+

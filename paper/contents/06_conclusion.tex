@@ -1,0 +1,62 @@
+
+
+% \mypara{Interaction-centric explanations for OOD detection.}
+% \jihye{should we briefly reveal our plan for the followup work? or not necessary?}
+
+\section{Conclusion}
+We develop an unsupervised and human-interpretable explanation method for black-box OOD detectors based on high-level concepts derived from the internal layer representations of a (paired) DNN classifier.
+% In this work, we make a first attempt at developing an unsupervised and human-interpretable explanation method for black-box OOD detectors based on high-level concepts derived from an internal layer representation of a (paired) DNN classifier.
+We propose novel metrics viz. {\em detection completeness} and {\em concept separability} to evaluate the completeness (sufficiency) and quality of the learned concepts for OOD detection.
+We then propose a concept learning method that is quite general and applies to a broad class of off-the-shelf OOD detectors.
+Through extensive experiments and qualitative examples, we demonstrate the practical utility of our method for understanding and debugging OOD detectors.
+We discuss additional aspects of our method such as the auxiliary OOD dataset, human subject study, and societal impact in Appendix~\ref{sec:app_discussion}.
+
+\iffalse
+
+This work introduces a first method (to the best of our knowledge) for providing concept-based attributions of the decision of an OOD detector based on high-level concepts derived from the internal layer representations of a (paired) DNN classifier.
+% We define the concept evaluation criteria of detection completeness and concept separability and propose a general framework for learning concepts that satisfy the criteria without involving laborious human effort for concept annotations.
+By treating OOD detectors as a black-box, our framework applies to a wide variety of OOD detectors.
+%Our general framework can be applied to these existing OOD detection methods by choosing a suitable intermediate layer for concept-based interpretation~\footnote{For instance, if an OOD detector makes decisions based on outputs from an intermediate layer $\ell$, the user can explain it using concepts that can reconstruct the feature representations from layer $\ell$, or an earlier layer.}.
+
+\mypara{Auxiliary OOD Dataset.} 
+%Our approach also remains a limitation in that an auxiliary dataset of an OOD distribution is required.
+A limitation of our approach is its requirement of an auxiliary OOD dataset for concept learning, which could be hard to access in certain applications.
+% A weakness of our approach is that it requires an auxiliary OOD dataset for concept learning. 
+% Unfortunately, access to such data could be a luxury in certain applications.
+To overcome that, a research direction would be to design generative models that simulate domain shifts or anomalous behavior and could create the auxiliary OOD dataset synthetically, allowing us additional control on the extent of distributional changes the resulting concepts could deal with (see Appendix~\ref{app:auxiliary-ood} for further discussion). 
+
+% We believe this work takes a step toward building trust in the deployment of OOD detectors, which will help the practical integration of such systems towards making societal decisions.
+
+\mypara{Human Subject Study.} 
+% One would suggest performing a user study to get a more extensive understanding of the effectiveness of our method in the hands of ML practitioners.
+Performing a human-subject (or user) study would be the ultimate way to evaluate the effectiveness of explanations, but remains largely unexplored even for in-distribution classification tasks.  
+We emphasize that designing such a usability test with OOD detectors would be even more challenging due to the characteristics of the OOD detection task, compared to in-indistribution classification tasks.
+For in-distribution classifiers, users could potentially generate hypotheses about what high-level concepts should attribute to the class prediction, and compare their hypotheses to the provided explanations to determine the classifier's reliability.
+On the other hand, assessing the reliability of OOD detection involves checking whether a given input belongs to any of the natural distributions of concepts; this is essentially limited to whether users' mental models on such global distributions can be accurately probed via a couple of presented local instances.
+We believe that designing a thorough probing method for human interpretability on OOD detection would be an interesting yet challenging research quest by itself and our paper does not address that.
+
+\mypara{Societal Impact.}
+\label{sec:broader_impact}
+Our work helps address the detection results of OOD detectors, giving practitioners the ability to explain the model's decision to invested parties. 
+Our explanations can also be used to keep a data point as an understood mistake by the model rather than throwing it away without further analysis, which could help guide how to improve the OOD detector with respect to the concepts. 
+However, this would also mean that more trust is put back into the human practitioner to not abuse the explanations or misrepresent them. 
+
+
+% (\eg feature attribution).
+% such as feature attribution or concept-based interpretability for class predictions.
+
+% Future work -- what to do with such explanations on ood detections. What kind of help to ml practitioners? \\.\\.
+% usefulness of concept-based explanation vs feature attribution method for OOD detection explanations -- conduct human-centric evaluations
+% This paper takes a step toward interpreting what makes data to be detected as in-distribution or OOD, and what are the distinguishing characteristics between in-distribution and OOD data.
+% malicious distribution shift
+
+In this work, we propose a first method (to the best of our knowledge) for providing concept-based attributions of the decisions of an OOD detector based on high-level concepts derived from the internal feature representations of a DNN classifier.
+We quantify how a set of concepts can  accurately describe an OOD detector's behavior through our detection completeness metrics. 
+We also propose a general framework for learning concepts, that does not involve human-based concept annotations, by incorporating regularization terms that ensure accurate reconstruction of the feature representation space based on concept scores.
+% In future work, one could reduce the performance gap of the DNN classifier and OOD detector even further in our two-world view by bringing insights from the knowledge-distillation literature to the regularization design \cite{romero2014fitnets, zagoruyko2016paying}.
+% In addition to detection completeness, we propose a concept separability metric that can be directly plugged into our concept learning framework. 
+Our explanations with diverse OOD detectors and datasets confirm our insight that separability in the concept space leads to better distinction between the resulting explanations for ID and OOD-detected inputs.
+% , hence bringing more intuitive interpretations. 
+Future work includes human-centric evaluations \cite{doshi2017towards, poursabzi2021manipulating} to assess how real users find our concept-based explanations compared to explanations generated by prior works.
+
+\fi
